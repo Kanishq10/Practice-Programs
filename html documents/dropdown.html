@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <style>
+	 .dropdown{
+	   position:relative;
+	   display:inline-block;
+	 }
+	 .dropdown-content{
+	  display:none;
+	  box-shadow:2px 2px 2px 2px black;
+	  z-index:1;
+	 }
+	 .drop-list{
+	  margin:0;
+	  list-style:none;
+	  padding:0;
+	 }
+	 .drop-list li{
+	  color:red;
+	 }
+	 .dropdown:hover .dropdown-content{
+	 display:block;
+	 }
+	</style>
+   </head>
+   <body>
+    <div class="dropdown">
+	 <span><button><h1>Hello</h1></button></span>
+	 <div class="dropdown-content">
+	    <ul class="drop-list">
+		<li>How</li>
+		<li>are</li>
+		<li>You</li>
+		</ul>
+	 </div>
+	</div>
+   </body>
+</html>

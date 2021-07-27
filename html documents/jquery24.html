@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+           $(document).ready(function(){
+               $("button").click(function(){
+                   $("div").animate({left:'200px'},5000);
+               });
+           });
+        </script>
+        <div style="background-color: black;width: 100px;height: 100px;position: relative;margin-bottom: 20px;"></div>
+        <button>click to animate</button>
+    </body>
+</html>

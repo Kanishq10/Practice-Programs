@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script>
+         $(document).ready(()=>{
+         
+             $("#buttonSet").click( ()=> {
+                 $("#txtBox").val("Amit");
+                 $("input:radio").val(["male"]);
+            
+                 $("#buttonGet").removeAttr('disabled');
+            });
+             $("#buttonGet").click( ()=> {
+         
+                $("#result").html(
+                    $("#txtBox").val() + "<br/>" +
+                    $("input:radio[name=rd]:checked").val()
+                );
+            });
+         });
+      </script>
+   </head>
+   <body>
+      Name <br />
+      <input id="txtBox" type="text" />
+      <br /><br />
+      Gender <br />
+      <input type="radio"  name="rd" value="male"/> Male
+      <input type="radio"  name="rd" value="female"/> Female
+      <br /><br />
+      <input id="buttonSet" type="button" value="Set Values" />
+      <input id="buttonGet" type="button" value="Get Values" disabled="disabled" />
+      <p id="result"></p>
+   </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    Enter <input type="text" id="a" onkeypress="f1()">
+    Enter <input type="text" id="b" onfocus="f2(this)">
+    <script>
+        function f1() {
+            var a=document.getElementById("a").value;
+            var b=a.toUpperCase();
+            document.getElementById("a").value=b;
+        }
+        function f2(val){
+                val.style.color="red";
+        }
+    </script>
+</body>
+</html>

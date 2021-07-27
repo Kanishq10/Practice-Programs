@@ -1,0 +1,27 @@
+import java.util.Scanner;
+// Other imports go here
+// Do NOT change the class name
+class Main{
+    public static void main(String[] args)
+    {
+        // Write your code here
+      Scanner input = new Scanner(System.in);
+      int t = input.nextInt();
+      for(int i =0;i<t;i++){
+        int size = input.nextInt();
+        int num = input.nextInt();
+        int[] arr = new int[size];
+        for(int j =0;j<size;j++){
+          arr[j]=input.nextInt();
+        }
+        int index = -1;
+        for(int k=0;k<size;k++){
+          if(arr[k]==num){
+            index = k;
+            break;
+          }
+        }
+        System.out.println(index);
+      }
+    }
+}

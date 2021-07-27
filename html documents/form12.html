@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <form action="#" onsubmit="sub(event)" onreset="f1()">
+    First Name<input type="text" name="fname" placeholder="first name"><br>
+    Last Name<input type="text" name="lname" placeholder="last name"><br>
+    <button type="reset">Reset</button>
+    <button type="submit">Submit</button>
+    </form>
+    <script>
+        function sub(event){
+            event.preventDefault();
+            alert("form submitted")
+        }
+        function f1(){
+            alert("You reset the page")
+        }
+    </script>
+</html>

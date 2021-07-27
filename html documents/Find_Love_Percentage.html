@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="red">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Love Percentage</title>
+    <style>
+        html{
+            font-size: 1.8rem;
+            color: red;
+            font-family: cursive;
+        }
+        form{
+            height: 100vh;
+            width: 100vw;
+        }
+        div{
+            margin: 50px 10px;
+        }
+        input{
+            width: 95%;
+            line-height: 1.2rem;
+            border-color:red;
+        }
+        button{
+            color: white;
+            font-weight: 600;
+            background-color: red;
+            line-height: 1.2rem;
+            width: 95%;
+            border: 2px groove red;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-family: cursive;
+        }
+        @media (min-width:400px) {
+            form{
+                height: fit-content;
+                width: 10cm;
+                margin: auto;
+            }
+        }
+        @media (min-width:700px){
+            html{
+                font-size:2rem;
+            }
+            form{
+                margin: 10px;
+            }
+        }
+    </style>
+    <script>           
+        function wellcome(){
+            alert("Welcome! This is only a dummy game in which we find love percentage like we played in school. It is only For Fun ☺️");
+        }
+        function find(event){
+            event.preventDefault();
+            var a=parseInt(Math.random()*100);
+            if(a<=10){
+                alert(a+"%"+" No, Your Crush/Lover Don't Loves You. ☹️");
+            } 
+            else if(a>10 && a<=30){
+                alert(a+"%"+" No, Don't Think It As Love, It Is Only An Attraction. 🤨");
+            }    
+            else if(a>30 && a<=60){
+                alert(a+"%"+" A Little Bit, Keep Trying... 🤩");
+            } 
+            else if(a>60 && a<=80){
+                alert(a+"%"+" Yes! He/She Loves You,But Keep Trying...  🥰");
+            }     
+            else if(a>80 && a<=95){
+                alert(a+"%"+" Yup! You Are In Deep Love. 😍");
+            } 
+            else{
+                alert(a+"%"+" This Is Called True Love. 😇");
+            }
+            document.getElementById("name").value="";
+            document.getElementById("lname").value="";
+        }
+    </script>
+</head>
+<body onload="wellcome()">
+    <form onsubmit="find(event)">
+        <div><label for="fname">Enter Your Name</label><br><input type="text" id="name" required></div>     
+        <div><label for="lname">Enter Your Crush/Lover Name </label><br><input type="text" id="lname" required></div>
+        <div><button>Find Love %age</button></div>
+    </form>
+</body>
+</html>

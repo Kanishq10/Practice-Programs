@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: aquamarine;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #d1 {
+            transition: 2s;
+        }
+
+        #d2 {
+            transition: transform 3s linear;
+        }
+
+        #d3 {
+            transition: 3s ease-in-out;
+        }
+
+        #d4 {
+            transition: 3s ease-in-out;
+        }
+
+        #d5 {
+            transition: 3s ease-in-out;
+        }
+
+        #d6 {
+            transition: 3s ease-in-out;
+        }
+
+        #d1:hover {
+            transform: skew(360deg) rotate(360deg) scale(1.1);
+        }
+
+        #d2:hover {
+            height: 300px;
+            width: 300px;
+            transform: rotate3d(1,2,3,65deg);
+        }
+
+        #d3:hover {
+            transform: scale(2);
+        }
+
+        #d4:hover {
+            transform: skew(360deg, 360deg);
+        }
+
+        #d5:hover {
+
+            transform: translate(100px, 300px);
+            /* -webkit-transform: translate(100px,200px); if some compatibility issue*/
+        }
+
+        #d6:hover {
+            transform: matrix(1, 2, 3, 4, 5, 6);/* The matrix() method combines all the 2D transform methods into one.
+
+The matrix() method take six parameters, containing mathematic functions, which allows you to rotate, scale, move (translate), and skew elements.
+
+The parameters are as follow: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY()) */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">hello</div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+    <div id="d4"></div>
+    <div id="d5"></div>
+    <div id="d6"></div>
+</body>
+
+</html>

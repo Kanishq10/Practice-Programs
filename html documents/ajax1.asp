@@ -1,0 +1,1 @@
+This is some text from external asp file

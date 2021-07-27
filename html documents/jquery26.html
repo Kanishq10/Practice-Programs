@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<body>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#b1").click(function(){
+                $("#main").slideToggle(3000);
+            });
+            $("#b2").click(function(){
+                $("#main").stop();
+            });
+        });
+    </script>
+    <button id="b1">start sliding</button>&nbsp
+    <button id="b2">stop</button>
+    <div id="panel" style="background-color: aquamarine;padding: 10px;text-align: center;color:red;">click buttons to perform functions</div>
+    <div id="main" style="display: none;background-color: blueviolet;padding: 300px;">ha ha ha ha ha ha ha ha ha ha h aha a </div>
+</body>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function red(){
+                document.getElementById("a").style.color="red";
+            }
+            function blue(){
+                document.getElementById("a").style.color="blue";
+            }
+            function yellow(){
+                document.getElementById("a").style.color="yellow";
+            }
+        </script>
+    </head>
+    <body>
+         <button type="button" onclick="yellow()">CLICK HERE</button>
+         <h1 id="a" onmouseup="red()" onmousedown="blue()">COLOR CHANGING TEXT</h1>
+    </body>
+</html>

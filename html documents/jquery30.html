@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('button').click(function(){
+                    $('p').append("<b>appended text</b>");
+                });
+            });
+        </script>
+        <p>This is para 1 </p>
+        <p>this is para 2 </p>
+        <button>append</button>
+    </body>
+</html>

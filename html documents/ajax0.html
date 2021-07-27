@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("div").load("ajax0.txt #p1",function(responseTxt,statusTxt,xhr){ <!--get element with id p1 from demo file-->
+                        if(statusTxt=="success")
+                            alert("successfully load request  "+xhr.status);
+                        if(statusTxt=="error")
+                            alert("ERROR "+xhr.status+":"+xhr.statusTxt);
+                    });
+                });
+            });
+        </script>
+       <div>let jquery ajax to load content</div> <br>
+       <button>get external content</button>
+    </body>
+</html>

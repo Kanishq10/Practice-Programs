@@ -1,0 +1,22 @@
+
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+           
+           function s1(){
+               $.get('https://api.nasa.gov/planetary/apod',function(data){
+                   var imageURL=data.message;
+                   $("img").attr('src',imageURL);
+               }).fail(function(xhr,textstatus,errorthrown){
+                console.log("failed");
+               });
+           }
+           $("#dog-image").click(s1);
+        </script>
+    </head>
+    <body>
+        <div><img></div>
+        <button id="dog-image">fetch</button>
+    </body>
+</html>

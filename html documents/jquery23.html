@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+          $(document).ready(function(){
+              $('#main').click(function(){
+                  $('#panel').slideToggle(3000);
+              });
+          });
+        </script>
+        <div id="main" style="background-color: red;text-align: center;padding: 5px;border: 2px solid black;color: aliceblue;">
+            click to toggle panel
+        </div>
+        <div id="panel" style="background-color: blue;text-align: center;color: white;padding:100px;display:none ;">
+            ha ha
+        </div>
+    </body>
+</html>

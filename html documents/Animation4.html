@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
+            html{
+                background-color: black;
+                font-size: 2rem;
+            }
+            div{
+                color: white;
+                position: relative;
+                height: max-content;
+                width: fit-content;
+                font-family: 'Warnes', cursive;
+                margin: 200px auto;
+                animation: bounce 5s alternate infinite;
+                /* transition: 2s ease-in-out; */
+               
+            }
+       
+            @keyframes bounce {
+                from{
+                    transform: scale(0) translateY(-100px) rotate(0deg);
+                    text-shadow: 0 0 5px #fff, 0 0 20px white,0 0 30px rgb(255, 255, 255);
+                }           
+                to{
+                    transform: scale(1) translateY(100px) rotate(360deg);
+                    text-shadow: 0 0 5px #fff, 0 0 20px white,0 0 30px rgb(55, 0, 255),0 0 40px blue, 0 0 50px rgb(255, 13, 255),0 0 55px rgb(0, 238, 255);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Hello How Are You?</h1>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <form>
+        <fieldset>
+            <legend>Permissions</legend>
+            <select id="f1" onclick="validate()">
+                <option value="1">SELECT AGE</option>
+                <option value="2">Less Than 18</option>
+                <option value="3">=18 to 30</option>
+                <option>More Than 30</option>
+            </select>
+        </fieldset>
+    </form>
+    <script>
+        function validate(){
+            var a;
+            a=document.getElementById("f1").value;
+            if(a==1){
+                alert("Cant join party");
+            }
+            else if(a==2){
+                alert("AA JAO! Pawri Ho Rhi Hai");
+            }
+            else{
+                alert("Too old better luck in next life");
+            }
+
+        }
+    </script>
+</html>

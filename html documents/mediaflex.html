@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .flex{
+                width: 80%;
+                height: auto;
+                margin: auto;
+            }
+            .flex div{
+                height: 200px;
+                width: 300px;
+                border: 2px solid black;
+                margin: 5px;
+                display: inline-block;
+                background-color: aqua;
+            }
+            @media (max-width:800px) {
+ 
+                .flex div{
+                    background-color: red;
+                    display: block;
+                }              
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </body>
+</html>

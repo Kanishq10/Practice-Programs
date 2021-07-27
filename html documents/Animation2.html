@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0d6efd">
+        <style>
+            #d1{
+                box-sizing: border-box;
+                height: 300px;
+                width: 300px;
+                margin:200px auto;
+                border-top:20px solid red ;
+                border-bottom:20px solid blue ;
+                border-radius: 100%;
+                position: relative;
+                animation: loader1 2s linear -2s infinite  ;
+
+            }
+            #d2{
+                height: 100px;
+                width: 100px;
+                margin:25% auto;
+                position:absolute;
+                border-left:10px solid greenyellow ;
+                border-right:10px solid rgb(255, 61, 239);
+                border-radius: 100%;
+                animation: loader2 0.5s linear -2s  infinite;
+            }
+            @keyframes loader1 {
+                from{
+                    transform: rotate(0deg);
+                }
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+            @keyframes loader2 {
+                from{
+                    transform: rotate(0deg);
+                } 
+                to{
+                    transform: rotate(-360deg);
+                }               
+            }
+        </style>
+    </head>
+    <body>
+        <div id="d1">
+            <div id="d2">
+
+            </div>
+        </div>
+    </body>
+</html>

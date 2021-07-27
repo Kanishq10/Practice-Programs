@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button  onmousedown="f1(event)">click me</button><!--onmousedown is necessary because it cannot identify button at the time of click-->
+         <script>
+           function f1(event){
+               if(event.button==0){
+                   alert("you clicked left button")
+               }
+               else if(event.button==1){
+                   alert("you clicked middle button")
+               }
+               else{
+                   alert("you clicked right")
+               }
+           }
+         </script>       
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>
+        Enter Name <input type="text" name="na" id="abc">
+        <button type="submit" onclick="f1()">Validate</button>
+        </form>
+        <script>
+            function f1(){
+                var a=document.getElementById("abc").value;
+                if((a=="")||(a==null)){
+                    alert("Fill your name");
+                }
+            }
+        </script>
+    </body>
+</html>

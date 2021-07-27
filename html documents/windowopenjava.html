@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>
+           User Name <input type="text" name="user" id="u">
+            <br><br> Password <input type="password" name="pass" id="p"><br><br>
+            <button type="submit" onclick="f1()">Login</button>
+        </form>
+        <script>
+            function f1(){
+                var a=document.getElementById("u").value;
+                var b=document.getElementById("p");
+                if((a="abc") && (b.value="123")){
+                    window.open("boots33.html");
+                }
+                else{
+                    alert("Incorrect");
+                    window.open("this");
+                }
+            }
+        </script>
+    </body>
+</html>

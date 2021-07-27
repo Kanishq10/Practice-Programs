@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function getme(){
+                var a=parseInt(document.getElementById("a").value);
+                var b=parseInt(document.getElementById("b").value);
+                var sum=a+b;
+                document.write(sum);
+            }
+        </script>
+    </head>
+    <body>
+        Enter 1st number<input type="number" id="a"><br>
+        Enter 2nd nuber<input type="number" id="b">
+        <button ondblclick="getme()">sum</button>
+    </body>
+</html>

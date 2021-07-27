@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span id="a" onkeydown="f1()" onblur="f3()">Enter your name :</span><input type="text" id="b">
+        <script>
+            
+            function f1(){
+                 document.getElementById("a").style.color="blue";
+               }
+            function f2(){
+                 var a=document.getElementById("b").value;
+                 var b=a.toUpperCase;
+                 document.getElementById("b").value=b;
+                }
+            function f3(){
+                  document.getElementById("a").style.color="red";
+                }
+            function f4(){
+                 var a=document.getElementById("b").value;
+                  var b=a.toLowerCase;
+                  document.getElementById("b").value=b;
+                }
+
+        </script>
+    </body>
+</html>

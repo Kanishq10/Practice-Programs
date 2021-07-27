@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+       
+         div{
+             height: 100px;
+             width: 100px;
+             margin:200px;
+             border: 2px solid;
+         }
+      
+          .box{
+             display: none;
+             position: relative;
+             background-color: yellow;
+             box-shadow: 0px 0px 70px 30px rgba(255, 238, 0, 0.747);
+             z-index: 2;
+         }
+    
+            :active  :target{
+             display: block;
+         }
+        
+        
+        </style>
+    </head>
+    <body>
+        
+        <a id="a1" href="#f1">Hold to on</a><br><br>
+        
+        <div class="box" id="f1">
+            <a>X</a>
+            <p>lightbox</p>
+        </div>
+    </body>
+</html>

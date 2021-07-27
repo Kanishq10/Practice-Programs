@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function(){
+            $("div").on({
+                mouseenter:function(){
+                $(this).css("backgroundColor","blue");
+                },
+                mouseleave:function(){
+                    $(this).css("backgroundColor","red")
+                },
+                click:function(){
+                    $(this).hide(4595);
+                }
+                
+            });
+            $("button").click(function(){
+               $("div").show("fast"); 
+            });
+            });
+        </script>
+        <div style="height: 120px; width: 150px; background-color: rgb(27, 26, 25); color: white;">Move Mouse Over Me</div>
+        <button style="position:absolute; top: 15px;left: 180px;">show</button>
+    </body>
+</html>

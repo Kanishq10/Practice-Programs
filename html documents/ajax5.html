@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+          function f1(){
+              $.get('https://api.nasa.gov/planetary/apod',function(result){
+              var imageURL=result.message;
+              $('#myimage').attr('src',imageURL);
+              });
+          }
+          $("#b1").click(f1);
+        </script>
+        <button id="b1">fetch</button>
+        <div style="border: 10px solid blue;padding: 50px;">
+            <img id="myimage">
+        </div>
+    </body>
+</html>

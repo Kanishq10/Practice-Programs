@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'/>
+<style>
+#name{
+    color:red;
+}
+#name:hover{
+    color:black
+}
+</style>
+</head>
+<body>
+<label for="name">Name:</label>
+<input type="text" id="name"  onmouseout="def()"><script>
+function def(){
+    var a=document.getElementById("name").value;
+    var b=a.toUpperCase();
+    document.getElementById("name").value=b;
+}</script>
+</body>
+</html>

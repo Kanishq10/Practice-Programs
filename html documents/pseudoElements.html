@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+ <style>
+     .firstLetter::first-letter{
+         font-size: 2rem;
+     }
+     .firstLine::first-line{
+         font-weight: 600;
+     }
+     .After::after{ /*Virtual element*/
+         content:"";
+         background: url(https://image.similarpng.com/very-thumbnail/2020/07/Slightly-Smiling-Face-clip-art-PNG.png);
+         background-size: cover;
+         display: inline-block;
+         height: 100px;
+         width: 100px;
+     }
+     .Before::before{/*Virtual element*/
+         content: "Go and go ";
+         font-size: 1.5rem;
+     }
+     ul{
+         list-style: none;
+         padding: 5px;
+     }
+     li::before{
+         content: "";
+         background-image: url("https://t4.ftcdn.net/jpg/02/81/42/75/360_F_281427526_cLXxfnauJ0R4hUYR0827b3LTqVbLPr8r.webp");
+         background-size: cover;
+         display: inline-block;
+         height:30px;
+         width: 40px;
+         margin: 5px;
+     }
+ </style>
+</head>
+<body>
+    <p class="firstLetter">Lorem,  dolor sit amet consectetur adipisicing elit. Molestias beatae minus eius culpa laboriosam ad animi rem illum dicta nisi tenetur possimus, facilis ratione! Debitis ducimus excepturi dignissimos nam commodi.</p>
+    <p class="firstLine">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ex quam voluptatum minus accusamus. Soluta vel minima tempora at, deleniti sint quos suscipit temporibus! Nobis sit voluptas tempore corporis similique.</p>
+    <p class="After Before">Hey How Are you</p>
+    <ul>
+        <li>List</li>
+        <li>List2</li>
+        <li>List3</li>
+        <li>List4</li>
+        <li>List5</li>
+    </ul>
+</body>
+</html>

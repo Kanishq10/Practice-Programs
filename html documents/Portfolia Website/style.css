@@ -1,0 +1,273 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    font-family: cursive;
+    scroll-behavior: smooth;
+}
+
+#body-header{
+    height: 70vh;
+    opacity: 0.95;
+    background-image: url("image2\ \(2\).jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 10px;
+}
+
+/* horizontal list */
+.horizontal-list{
+    list-style:none;
+    padding-left: 0px;
+    margin: 0px;
+}
+.horizontal-list li{
+    display: inline-block;
+    margin: 0px 25px 25px 25px;
+}
+.horizontal-list li a{
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    
+}
+.nav-menu li a{
+    text-transform: capitalize;
+    transition:color 1s;
+    /* font-family: cursive; */
+}
+.nav-menu li a:hover{
+    color:rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgb(255, 255, 255,0.7);
+}
+.text-center{
+    text-align: center;
+}
+
+#social-container{
+    margin-top: 25vh;
+}
+#myname{
+    color: white;
+    font-size: 6rem;
+    /* font-family: cursive; */
+    letter-spacing: 0.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+.social-icons li a i{
+    padding: 10px;
+    border-radius: 50%;
+}
+.social-icons li a i:hover{
+    box-shadow:0px 0px 7px 5px rgba(255, 255, 255, 0.781);
+}
+
+/* #about{
+    height: auto;
+     width: 100%; 
+} */
+#myimage{
+    height: 11rem;
+    width: 12rem;
+    margin: auto;
+    position: relative;
+}
+#myimage img{
+    height: 100%;
+    width: 100%;
+    margin-top: -8.5rem;
+    border-radius: 60%;
+    box-shadow: 0px 0px 0px 3px white,0 0 4px 3px black ; 
+}
+.style-box{
+    
+    margin:0px 2rem;
+    box-shadow: inset -5px -5px 10px 5px rgba(126, 121, 121, 0.5),5px 5px 5px 2px rgba(0, 0, 0, 0.4);
+    padding: 5px 5rem;
+    overflow-wrap: break-word;
+    border-radius: 20px;
+}
+.para{
+    color:black;
+    /* font-family: cursive; */
+    font-weight: 300;
+    font-size: 2rem;
+}
+.heading{
+    font-size:2rem ;
+    text-transform: capitalize;
+    color: blue;
+    /* font-family: cursive; */
+    /* padding: 10px; */
+    /* margin: 10px; */
+    font-weight: 500;
+    font-size: 3rem;
+} 
+
+section{
+    height: auto;
+    width: 100%;
+    margin: 50px 0 0 0;
+}
+/* section:nth-child(2n){
+    background-color:lightgray;
+}
+section:nth-child(2n-1){
+    background-color: white;
+} */
+
+.flexible{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.skill-progress{
+    width:200px;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: lightgrey;
+    margin: 0 50px 0 50px;
+    border: 2px solid black;
+}
+.skill-progress>div{ /* only applies to first child div */
+    border-radius: 2rem 0 0 2rem;
+}
+.skill-name span{
+    color:white;
+    font-size: 1.3rem;
+    margin-left: 10px;
+    font-weight: 200;
+    /* font-family: cursive; */
+}
+
+.mb-75px{
+    margin-bottom: 75px;
+}
+.eighty-five-percent{
+    background-color: blue;
+    height: inherit;
+    width: 85%;
+}
+.fifty-percent{
+    background-color: red;
+    height:inherit;
+    width:50%;
+}
+.seventy-five-percent{
+    background-color: rgb(240, 240, 13);
+    height: inherit;
+    width: 75%;
+}
+.sixty-percent{
+    background-color: rgb(30, 240, 30);
+    height: inherit;
+    width: 60%;
+}
+.forty-percent{
+    background-color: rgb(255, 202, 137);
+    height: inherit;
+    width: 40%;
+}
+.ninty-percent{
+    background-color: rgb(195, 0, 255);
+    height: inherit;
+    width: 90%;
+}
+.thirty-percent{
+    background-color: rgb(21, 151, 9);
+    height: inherit;
+    width: 30%;
+}
+.border-box{
+    box-sizing: border-box;
+}
+.timeline{
+    position: relative;
+    height: inherit;
+    width: inherit;
+    /* border: 2px solid black; */
+}
+.timeline-box{
+    position: relative;
+    height: 200px;
+    width: 300px;
+    border: 2px solid black;
+    margin: 15px 0;
+    padding: 0;
+    background-color: aqua;
+}
+.timeline-box:nth-child(2n+1){
+    left:20%;
+}
+.timeline-box:nth-child(2n){
+    left: 53%;
+}
+.timeline-box::after{
+    content: "";
+    border-radius: 50%;
+    background-color: red;
+    height: 0.6rem;
+    width: 0.6rem;
+    position: absolute;
+    top: 65%;
+    z-index: 5;
+}
+.timeline-box:nth-child(2n)::after{
+    left:-23%;
+}
+.timeline-box:nth-child(2n+1)::after{
+    right: -22%;
+}
+
+.timeline-divider{
+    position: absolute;  /*its parent div must be of some display type ie.relative for positioning absolute to its parent div otherwise it will position itself according to body*/
+    height: 85%;
+    width: 0px;
+    top: 10%;
+    left: 48%;
+    border: 2px dashed blue;
+}
+#i1{
+    position: sticky;
+    top: 10%; /* we must give some top,bottom etc for sticky or absolute or fixed positioning*/
+    transform: rotate(90deg);
+    z-index: 10;
+}
+@media screen and (max-width:1528px) {
+    html{
+        font-size: 10px;
+    }
+    .timeline-divider{
+        left:1%;
+    }
+    .timeline-box{
+        left:10% !important;
+        width: 80%;
+    }
+  
+    .timeline-box::after{
+        content: none;
+       
+    }
+    .style-box{
+        margin: 0px 0px !important;
+    }
+    #about{
+        position: relative;
+    }
+    #myimage{
+        height: 10rem;
+        width: 10.5rem;
+        position: absolute;
+        top:15%;
+        left:5%;
+    }
+    #body-header{
+        height: 95vh;
+    }
+    
+   
+}

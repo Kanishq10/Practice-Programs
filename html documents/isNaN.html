@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>
+            Enter Something <input type="text" name="num" id="f1"><br>
+            <button onclick="abc()">Validate</button>
+        </form>
+        <script>
+            function abc(){
+                var a=document.getElementById("f1").value;
+                if(isNaN(a)){
+                    alert("Enter a number");
+                }
+            }
+        </script>
+    </body>
+</html>

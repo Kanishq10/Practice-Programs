@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        header{
+           background-color: silver;
+           border-bottom: 4px groove  silver;
+           box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.507);
+           position: fixed;
+           width: 100vw;
+           height: auto;
+           padding: 10px;
+           top: 0;
+        }
+        .horizontal-list{
+            list-style: none;
+            text-align: center;
+        }
+        .horizontal-list li{
+            display:inline-block;
+            margin:0 1.5rem 0 1.5rem;
+            text-transform: capitalize;
+            font-size: 2.5rem;
+            font-weight: 1000;
+            color: red;
+            text-shadow: -2px 2px 2px black;
+        }
+         input{
+            background: none;
+        }
+        .flexible{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 25px;
+            margin-top: 100px;
+        }
+        .flexible div{
+            height: 200px;
+            width: 250px;
+            margin: 0 100px 0 100px;
+            border: 2px solid;
+            border-radius: 1.7rem;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .flexible div img{
+            height: 100%;
+            width: 100%;
+            border-radius: 1.5rem;
+            position:relative;
+            z-index: -50;
+        }
+        .flexible div:hover{
+            box-shadow: 0px 7px 10px 3px rgba(0, 0, 0, 0.37);
+            transform: scale(1.05);
+        }
+        .flexible div span{
+            margin-left:90px;
+            color:rgb(221, 71, 96);
+            font-size: 2rem;
+            font-weight: 500;
+            display: none;
+        }
+        #b1{
+            background-color: red;
+            color: white;
+            width: 100px;
+            font-size: x-large;
+        }
+    </style>
+    <script src="..//jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#x1").hover(function(){
+                $("#m1").animate({top:'200px'},100);
+            },function(){
+                $("#m1").animate({top:"0px"},100);
+            });
+            
+            $("#x1").hover(function(){
+                $("#s1").slideDown(100);
+            },function(){
+                $("#s1").slideUp(100);
+            });
+
+            $("#x2").hover(function(){
+                $("#m2").animate({top:'200px'},100);
+            },function(){
+                $("#m2").animate({top:"0px"},100);
+            });
+            
+            $("#x2").hover(function(){
+                $("#s2").slideDown(100);
+            },function(){
+                $("#s2").slideUp(100);
+            });
+
+            $("#x3").hover(function(){
+                $("#m3").animate({top:'200px'},100);
+            },function(){
+                $("#m3").animate({top:"0px"},100);
+            });
+            
+            $("#x3").hover(function(){
+                $("#s3").slideDown(100);
+            },function(){
+                $("#s3").slideUp(100);
+            });
+        });
+            </script>
+</head>
+<body>
+ <header>
+     <nav>
+         <ul class="horizontal-list">
+             <li>$$ lets play the game $$</li>
+             <!-- <li>enter Password <input type="password"></li>
+             <li><button id="b1">Play</button></li> -->
+         </ul>
+     </nav>
+ </header>
+ <main>
+     <div id="choose" class="hidden flexible">
+        <div id="x1"><span id="s1">Stone</span><img src="stone.jpg" id="m1"></div>
+        <div id="x2"><span id="s2">Paper</span><img src="paper.jpg" id="m2"></div>
+        <div id="x3"><span id="s3">Scissor</span><img src="scissor.jpg" id="m3"></div>
+     </div>
+     <div id="d1" class="hidden flexible">
+         <div><img src="stone.jpg"></div>
+         <h1>Vs</h1>
+         <div><img src="scissor.jpg"></div>
+     </div>
+     <div id="d2" class="hidden flexible">
+        <div><img src="stone.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="paper.jpg"></div>
+     </div>
+     <div id="d3" class="hidden flexible">
+        <div><img src="stone.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="stone.jpg"></div>
+     </div>
+     <div id="d4" class="hidden flexible">
+        <div><img src="paper.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="stone.jpg"></div>
+     </div>
+     <div id="d5" class="hidden flexible">
+        <div><img src="paper.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="scissor.jpg"></div>
+     </div>
+     <div id="d6" class="hidden flexible">
+        <div><img src="paper.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="paper.jpg"></div>
+     </div>
+     <div id="d7" class="hidden flexible">
+        <div><img src="scissor.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="paper.jpg"></div>
+     </div>
+     <div id="d8" class="hidden flexible">
+        <div><img src="scissor.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="stone.jpg"></div>
+     </div>
+     <div id="d9" class="hidden flexible ">
+        <div><img src="scissor.jpg"></div>
+        <h1>Vs</h1>
+        <div><img src="scissor.jpg"></div>
+     </div>
+
+ </main>
+</body>

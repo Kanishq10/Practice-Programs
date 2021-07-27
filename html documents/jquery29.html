@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="test">this is <i>italic</i> and this is<br> <b>bold</b> text</p>
+    <button id="b1">show text</button>
+    <button id="b2">show html</button>
+    </body>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $('#b1').click(function(){
+            alert($('#test').text());
+        });
+        $('#b2').click(function(){
+            alert($('#test').html());
+        });
+    </script>
+</html>

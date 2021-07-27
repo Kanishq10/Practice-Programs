@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <ul>
+            <li>tata</li>
+            <li>bye</li>
+        </ul>
+        <button id="b1">append</button>
+        <button id="b2" >prepend</button>
+        <button id="b3">before</button>
+        <button id="b4">after</button>
+        <button id="b5">empty</button>
+        <button id="b6">remove</button>
+    <script>
+      $(document).ready(function(){
+          $("#b1").click(function(){
+              $("ul").append("<li>bye</li>");
+          });
+          $("#b2").click(function(){
+              $("ul").prepend("<li>khatam</li>");
+          });
+          $("#b3").click(function(){
+              $("ul").before("<li>hello</li>");
+          });
+          $("#b4").click(function(){
+              $("ul").after("<p>haha<br></p>");
+          });
+          $("#b5").click(function(){
+              $("ul").empty();
+          });
+          $("#b6").click(function(){
+              $("ul li:last").remove();
+          });
+      });
+          
+    </script>
+    </body>
+</html>

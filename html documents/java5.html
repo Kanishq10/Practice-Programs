@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function xyz(){
+            var x='HEllo guys how are you';
+            var y=x.split(" ");
+            var a=new Array("anita","ram");
+            var sin=x.length;
+            var pos=x.indexOf("guys")
+            document.getElementById("a").innerHTML=a;
+            document.getElementById("b").innerHTML=sin;
+            document.getElementById("c").innerHTML=pos;
+            alert("hello  "+a[1]+" "+x.charAt(6)+" "+y[2]);
+            }
+        </script>
+        <button type="button" onclick="xyz()">click me</button>
+        <p id="a"></p>
+        <p id="b"></p>
+        <p id="c"></p>
+    </body>
+</html>

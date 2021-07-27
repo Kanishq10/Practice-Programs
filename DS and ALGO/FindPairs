@@ -1,0 +1,21 @@
+class Solution {
+
+    public static int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2, int x) { //this approach can be used for single linked list
+
+        HashSet<Integer> h=new HashSet<>();
+        for(int i=0;i<head1.size();i++){
+            h.add(head1.get(i));
+        }
+        int count=0;
+        for(int i=0;i<head2.size();i++){
+            if(h.add(x-head2.get(i))==false){
+                count++;
+            }
+        }
+        return count;
+    }
+}
+for single linked list:
+>>first store all elements in HashSet
+>>then traverse the list and check if sum-list.Element is present in hashset or not
+>>if present then count++ 

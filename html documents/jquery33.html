@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("h1,h2").toggleClass("helo");
+                });
+            });
+        </script>
+        <style>
+            .helo{
+               font-family: serif;
+               color: red;
+               background-color: violet; 
+            }
+        </style>
+    </head>
+    <body>
+        <p><h1>heading 1</h1></p>
+        <p><h2>heading 2</h2></p>
+        <button>toggleclass</button>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube</title>
+    <style>
+        .cube{
+            height: 200px;
+            width: 200px;
+            margin: 200px auto;
+            position: relative;
+            transform-style:preserve-3d;
+            perspective: 1000px;
+            transform: rotateX(25deg) rotateY(-25deg);
+            /* animation: rt 2s alternate infinite; */
+        }
+        .face{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transition: all 1s;
+            
+        }
+        .one{
+            background-color: rgb(255, 0, 0);
+            
+        }
+        .two{
+            background-color: blue;
+            transform: rotateY(90deg) translateX(100px)  translateZ(100px);
+        }
+        .three{
+            background-color: yellow;
+            transform: z;
+        }
+      
+        
+
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="face one"> 
+        </div>
+        <div class="face two"></div>
+        <div class="three"></div>
+    </div>
+</body>
+</html>

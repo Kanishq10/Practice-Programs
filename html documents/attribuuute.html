@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function abc(){
+                var a=document.getElementById("n").value;
+                document.getElementById("a").setAttribute("class","uprise");
+                document.getElementById("a").innerHTML=a;
+            }
+        </script>
+        <style>
+                .uprise{
+                    color:red;
+                    font-size:50px;
+                    background-color:blue;
+                    background-size: auto;
+                    text-transform:uppercase;
+                }
+        </style>
+    </head>
+    <body >
+        Enter Your Name
+        <input type="text" name="name" id="n">
+        <button type="button" onclick="abc()">Click here</button>
+        <p id="a"></p>
+    </body>
+</html>               

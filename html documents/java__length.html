@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>
+            Name: <input type="text" name="fname" id="a"><br><br>
+            Password: <input type="password" name="pass" id="b">
+            <button onclick="f1()">Validate!!!</button>
+        </form>
+        <script>
+            function f1(){
+                var a=document.getElementById("a").value;
+                var b=document.getElementById("b").value;
+                if((a.length==0)||(b.length<7)){
+                    alert("Enter Again");
+                }
+
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+          function def(){
+              //var x=prompt("Enter a string"," ");
+              var a=document.createElement("p");
+              var b=document.createTextNode("b");
+              a.appendChild(b);
+              var c=document.getElementById("hh");
+              c.appendChild(a);
+              document.getElementById("aa").innerHTML=x;
+          }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="def()">Click click</button>
+        <p id="hh"></p>
+        <p id="aa"></p>
+    </body>
+</html>

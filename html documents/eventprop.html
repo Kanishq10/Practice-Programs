@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button id="bu">Try it</button>
+        <p id="h"></p>
+        <script>
+          var x=document.getElementById("bu");
+          x.addEventListener("mouseover",f1);
+          x.addEventListener("mouseout",f2);
+          function f1(){
+             document.getElementById("h").innerHTML+="mouseover<br>";
+          }
+          function f2(){
+              document.getElementById("h").innerHTML+="mousedown<br>";
+          }
+        </script>
+    </body>
+</html>

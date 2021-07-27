@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("div").empty();
+                });
+            });
+        </script>
+        <div style="background-color: cyan;border:10px dotted red">
+            <p>This is first paragraph</p>
+            <p>This is second paragraph</p>
+            <p>This is third paragraph</p>
+        </div>
+        <button type="button">remove the para</button>
+    </body>
+</html>

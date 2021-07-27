@@ -1,0 +1,28 @@
+import tkinter as tk
+from tkinter import *
+def add():
+    x=int(e1.get())
+    y=int(e2.get())
+    e3.insert(0,x+y)
+    e1.delete(0,END)
+    e2.delete(0,END)
+win=Tk()
+win.title("ADD two numbers")
+win.geometry("600x700+800+10")
+win.resizable(width=None,height=None)
+l1=Label(win,text="First number",fg="red" ,width="100")
+l1.pack()
+e1=Entry(win,width=100)
+e1.pack()
+l2=Label(win,text="Second number",fg="red",width="100")
+l2.pack()
+e2=Entry(win,width=100)
+e2.pack()
+l3=Label(win,text="ADDITION IS",fg="red",width="100")
+l3.pack()
+e3=Entry(win,width=100)
+e3.pack()
+b1=Button(win,text="ADD",width=50,activeforeground="red",activebackground="blue",bg="red",fg="blue",command=add)
+b1.pack()
+win.mainloop()
+

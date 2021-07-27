@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<body>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(this).click(function(){
+            $("p").hide(5000,function(){
+                alert("paragraph is hidden");
+            });
+        });
+    </script>
+    <p style="background-color: bisque;padding: 60px;text-align: center;color: blue;border: 10px groove red;">click me to hide me</p>
+</body>

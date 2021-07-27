@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        function fact(){
+            var x,fact;
+            x=document.getElementById("no").value;
+            fact=1;
+            while(x>0){
+                fact=fact*x;
+                x--;
+            }
+           
+            alert("Factorial of the number is  "+fact);
+        }
+    </script>
+    <form onsubmit="fact()">
+        Enter a number <input type="number" name="num" id="no">
+        <button type="submit">Find Factorial</button>
+    </form>
+</body>

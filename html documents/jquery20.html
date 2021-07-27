@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jquery fade to</title>
+        <style>
+            div{
+                display: inline-block;
+                width: 150px;
+                height:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="jquery-3.6.0.js"></script>
+        <script>
+         $(document).ready(function(){
+         $("button").click(function(){
+             $("#d1").fadeTo('fast',0.15);//fade to method sets opacity value bw 0 to 1
+             $("#d2").fadeTo(6000,0.8);
+             $("#d3").fadeTo(8000,0.2);
+             
+         });
+         });
+        </script>
+        <div id="d1" style="background-color: blue;"></div>
+        <div id="d2" style="background-color: green;"></div>
+        <div id="d3" style="background-color: red;"></div>
+        <button style="position: absolute;top:300px;left:1cm">fadeTo</button>
+    </body>
+</html>

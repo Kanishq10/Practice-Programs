@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+           body{
+               margin: 0px;
+               /* padding: 0px; */
+           }
+           #body-header{
+               background-color: rgb(148, 122, 240);
+               width: 100%;
+               height: 10vh;
+               box-sizing: border-box;
+               /* border-bottom: 5px groove  rgba(118, 96, 197, 0.61); */
+               box-shadow: 0px 1px 20px 0px black,inset -5px -5px 10px 2px rgba(255, 255, 255, 0.336); 
+               position:fixed;
+               top: 0;
+               overflow: hidden;
+           }
+           .horizontal-list{
+               padding-left: 0px;
+               margin-top:0px;
+               list-style: none;
+           }
+           .horizontal-list li{
+               display: inline-block;
+               margin:0px 10rem 10rem 0px;
+               margin-top: 10px;
+           }
+           .horizontal-list li a{
+               color: white;
+               font-size: x-large;
+               text-decoration: none;
+               font-family: cursive;
+               
+           }
+           .text-center{
+               text-align: center;
+           }
+           .nav-menu li a{
+               transition: color 1s;
+           }
+           .nav-menu li a:hover{
+               text-decoration: underline red;
+               color: red;
+           }
+		   .drop{
+		    position:relative;
+			display:inline-block;
+			transition:1s;
+		   }
+		   .drop-list{
+		    list-style:none;
+			display:none;
+			z-index:2;
+			box-shadow:2px 2px 5px 2px black;
+		   }
+		   .drop-list li{
+		    color:red;
+			display:block;
+			padding-left:2px;
+			margin:2px 0;
+		   }
+		   .drop:hover .drop-list{
+		    display:block;
+		   }
+        </style>
+    </head>
+    <body>
+        <header id="body-header">
+          <nav>
+              <ul class="horizontal-list text-center nav-menu">
+                 <li>
+                     <a>
+                       Home
+                     </a>
+                 </li>
+                 <li>
+                     <a>
+                       About
+                     </a>
+                 </li>
+                 <li>
+                     <a class="drop">
+                        <span>Main Menu</span>
+					 <ul class="drop-list">
+					    <li>Order</li>
+						<li>Delivered</li>
+						<li>In place</li>
+						<li>Yet To be delevered</li>
+					 </ul>
+					 </a>
+                 </li>
+                 <li>
+                     <a>
+                        Contact
+                     </a>
+                 </li>
+                 <li>
+                     <a>
+                         Feedback
+                     </a>
+                 </li>
+              </ul>
+          </nav>
+        </header>
+        <main>
+            <div style="font-size: 200px;">
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, fugiat. Dolore velit quia excepturi eaque tenetur a exercitationem maxime facilis quam. Officiis error ratione distinctio inventore consectetur porro facere? Maxime.
+                </p>
+            </div>
+            </main>
+    </body>
+</html>
