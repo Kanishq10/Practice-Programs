@@ -1,4 +1,3 @@
-
 class node{
     int info;
     node next,ptr,start=null,n;
@@ -314,7 +313,7 @@ class node{
     }
 
 }
-class Linked_List_Custom{
+class SingleLinkedList{
     public static void main(String[] args) {
         node x=new node();
         x.add(15);
