@@ -260,9 +260,8 @@ class LinkList{
         }
     }
     
-        LinkList swap(int x,int y){
-        LinkList head=start;
-        ptr=head;
+        void swap(int x,int y){
+        ptr=start;
         LinkList preptr=null;
         while(ptr!=null && ptr.info!=x){
             preptr=ptr;
@@ -270,8 +269,8 @@ class LinkList{
         }
         LinkList ptrX=ptr;
         LinkList preptrX=preptr;
-        ptr=head;
-        preptr=head;
+        ptr=start;
+        preptr=null;
         while(ptr!=null && ptr.info!=y){
             preptr=ptr;
             ptr=ptr.next;
@@ -283,20 +282,73 @@ class LinkList{
         ptrY.next=ptrX.next;
         ptrX.next=temp;
         if(preptrX==null){
-            head=ptrY;
+            start=ptrY;
             preptrY.next=ptrX;
         }
         if(preptrY==null){
-            head=ptrX;
+            start=ptrX;
             preptrX.next=ptrY;
         }
         if(preptrX!=null && preptrY!=null){
             preptrX.next=ptrY;
             preptrY.next=ptrX;
         }
-        return head;
-    }   
+    }  
+    
+    void reverse(){
+        if(start==null || start.next==null){
+            return;
+        }
+        LinkList prev=null;
+        ptr=start;
+        while(ptr!=null){
+            LinkList temp=ptr.next;
+            ptr.next=prev;
+            prev=ptr;
+            ptr=temp;
+        }
+        start=prev;
+    }
+    
+    LinkList reverseInNumbers(LinkList start,int k){ 
+        if(start==null || start.next==null){
+            return start;
+        }
+        ptr=start;
+        LinkList next=null,prev=null;
+        int count=0;
+        while(count<k && ptr!=null){
+            next=ptr.next;
+            ptr.next=prev;
+            prev=ptr;
+            ptr=next;
+            count++;
+        }
+        if(next!=null){
+            start.next=reverseInNumbers(next, k); //start is at end of first reversed linked sublist ,prev.next has start 
+        }
+        return prev; //head of list
+    }
 
+    void rotateBy(int n){
+        LinkList t=start,r=start;
+        int count=1;
+        while(count<=n && r!=null){ //for one place before nth count<=n
+            r=r.next;
+            count++;
+        }
+        if(r==null){
+            return;
+        }
+        while(r.next!=null){ // t will be one place before nth last
+            t=t.next;
+            r=r.next;
+        }
+        LinkList p=t.next;
+        r.next=start;
+         t.next=null;
+        start=p;        
+    }
 
     void print(){
         if(start==null){
@@ -392,5 +444,29 @@ class SingleLinkedList{
         y.add(34,1);
         y.print();
         y.print_Even_Odd();
+        LinkList sts=new LinkList();
+        sts.add(1);
+        sts.add(2);
+        sts.add(3);
+        sts.add(4);
+        sts.add(5); 
+        sts.add(5);
+        sts.add(7);
+        sts.add(8);
+        sts.add(9);
+        sts.add(10);
+        sts.add(11);
+        sts.add(12);
+        sts.print();
+        sts.reverse();
+        sts.print();
+        sts.swap(11, 1);
+        sts.swap(12, 11);
+        // sts.swap(100, 2); //throws errors
+        sts.print();    
+        sts.rotateBy(2);
+        sts.print();  
+         sts.start=sts.reverseInNumbers(sts.start, 3);
+         sts.print();
     }
 }
