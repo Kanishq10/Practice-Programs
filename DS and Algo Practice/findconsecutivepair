@@ -1,8 +1,0 @@
-count=0;
-ptr=start;
-while(ptr.next.next!=null){
-    if((ptr.info+ptr.next.info+ptr.next.next.info)==sum){
-        count++;
-    }
-    ptr=ptr.next;
-}
