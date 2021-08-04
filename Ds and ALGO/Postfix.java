@@ -22,13 +22,12 @@ class Stack_Array { //Problem with code : it needs to put  whole expression in a
         }
     }
 
-    int peek() { //return char
+    void peek() { //return char
         if (top == -1) {
             System.out.println("UnderFlow");
-            return -1;
+            return;
         }
         System.out.println(arr[top]);
-        return arr[top];
     }
 }
 
