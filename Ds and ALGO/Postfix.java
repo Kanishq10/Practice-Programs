@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-class Stack_Array { //Problem with code : it needs to put  whole expression in a bracket
+class Stack_Array { //Problem with code : it needs to put  whole expression in a bracket for input
     char arr[] = new char[100];
     int top = -1;
 
