@@ -22,7 +22,7 @@ class Stack_Array { //Problem with code : it needs to put  whole expression in a
         }
     }
 
-    void peek() { //return char
+    void peek() { 
         if (top == -1) {
             System.out.println("UnderFlow");
             return;
