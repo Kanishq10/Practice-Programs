@@ -23,7 +23,7 @@ class EvaluatePostfix {
                              break;
                     case '/':st.push(b/a);
                             break;
-                    case '^':st.push(b^a);
+                    case '^':st.push((int) Math.pow(b, a));
                             break;
                     case '%':st.push(b%a);
                             break;

@@ -26,7 +26,7 @@ class EvaluatePrefix {
                     case '/':
                     st.push(a/b);
                     case '^':
-                    st.push(a^b);
+                    st.push((int)Math.pow(a, b));
                     break;
                     case '%':
                     st.push(a%b);
