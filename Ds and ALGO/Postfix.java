@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-class Stack_Array { //Problem with code : it needs to put  whole expression in a bracket for input
+class Stack_Array {
     char arr[] = new char[100];
     int top = -1;
 
@@ -54,7 +54,7 @@ class Postfix {
         Scanner in = new Scanner(System.in);
         Stack_Array st = new Stack_Array();
         st.push('(');
-        String inp = in.nextLine();
+        String inp = in.nextLine(); //put input expression in paranthesis
         String out = "";
         int i = 0;
         while (st.top == -1 || i<inp.length()){
@@ -78,7 +78,7 @@ class Postfix {
                 }
                 st.pop();
             } 
-            else if (c == '^' || c == '%' || c == '*' || c == '/' || c == '+' || c == '-') {
+            else {
                 int x = order(c);
                 int y = order(st.arr[st.top]);
                 if (x > y) {

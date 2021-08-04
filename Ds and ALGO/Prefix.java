@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class Stack_Array_ { //Problem with code : it needs to put  whole expression in a bracket
+class Stack_Array_ { 
     char arr[] = new char[100];
     int top = -1;
 
@@ -51,7 +51,7 @@ class Prefix {
         Scanner in = new Scanner(System.in);
         Stack_Array_ st = new Stack_Array_();
         st.push(')');
-        String inp = in.nextLine();
+        String inp = in.nextLine(); //put input expression in paranthesis
         inp=new StringBuilder(inp).reverse().toString();
         String out = "";
         int i = 0;
@@ -76,7 +76,7 @@ class Prefix {
                 }
                 st.pop();
             } 
-            else if (c == '^' || c == '%' || c == '*' || c == '/' || c == '+' || c == '-') {
+            else{
                 int x = order(c);
                 int y = order(st.arr[st.top]);
                 if (x >= y) {
