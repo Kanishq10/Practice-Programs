@@ -1,0 +1,54 @@
+//tail recursion
+void fun(int var){
+   if(var<=0)
+       return;
+    else{
+	s.o.p(var);
+	fun(var-1);
+	}
+}
+
+//head recursion
+void fun(int var){
+    if(var<=0){
+	return;
+	}
+    else{
+	fun(var-1);
+	s.o.p(var);
+	}
+}
+
+//tree recursion
+void fun(int var){
+    if(var<=0){
+	return;
+	}
+    else{
+	s.o.p(var);
+	fun(var-1);
+	fun(var-2);
+	}
+}
+//nested recursion
+int fun(int var){
+    if(var>10){
+	    return var-1;
+	}else{
+	   fun(fun(var+1));
+	}
+}
+
+//Indirect Recursion
+void funx(int var){
+    if(var>0){
+	   s.o.p(var);
+	   funy(var-1);
+	}
+}
+void funy(int var){
+    if(var>1){
+    s.o.p(var);
+	funx(var-2);
+	}
+}
