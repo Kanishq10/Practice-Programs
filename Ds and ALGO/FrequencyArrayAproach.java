@@ -15,21 +15,20 @@ class FrequencyArrayAproach {
         for(int i=0;i<n;i++){
             arr[i]=s.nextInt();
         }
-        // find Largest
+
+        // find Largest and smallest
         int l=arr[0];
+        int sm=arr[0];
         for(int i=0;i<arr.length;i++){
             if (l<arr[i]){
                 l=arr[i];
             }
-        }
-        // find smallest
-        
-        int sm=arr[0];
-        for(int i = 0;i<arr.length;i++){
+            
             if(sm>arr[i]){
                 sm=arr[i];
             }
         }
+
         // Frequency of element array
        int larr[]=new int[l+1];
        for(int i=0;i<arr.length;i++){
