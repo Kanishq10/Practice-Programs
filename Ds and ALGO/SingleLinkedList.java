@@ -175,7 +175,7 @@ class LinkList{
             int count=1;
             LinkList t=start;//turtule rabbit approach
             LinkList r=start; 
-            while(count<=n && r!=null){ //traversing r to nth pos
+            while(count<n && r!=null){ //traversing r to nth pos
                 r=r.next;
                 count++;
             }
@@ -306,10 +306,13 @@ class LinkList{
         return prev; //head of list
     }
 
-    void rotateBy(int n){
+    void rotateClockwise(int n){
+        if(n==0){
+            return;
+        }
         LinkList t=start,r=start;
         int count=1;
-        while(count<=n && r!=null){ //for one place before nth count<=n
+        while(count<=n && r!=null){ //for one place after nth 
             r=r.next;
             count++;
         }
@@ -324,6 +327,27 @@ class LinkList{
         r.next=start;
          t.next=null;
         start=p;        
+    }
+
+    void rotateCounterClockwise(int n){
+        if(n==0){
+            return;
+        }
+        LinkList ptr=start,r=start;
+        while(ptr.next!=null){
+            ptr=ptr.next;
+        }
+        int count=1;
+        while(count<n && r!=null){
+            r=r.next;
+            count++;
+        }
+        if(r==null){
+            return;
+        }
+        ptr.next=start;
+        start=r.next;
+        r.next=null;
     }
 
     void BubbleSort(){ //find error
@@ -464,11 +488,16 @@ class SingleLinkedList{
         sts.swap(12, 11);
         // sts.swap(100, 2); //throws errors
         sts.print();    
-        sts.rotateBy(2);
+        sts.rotateClockwise(2);
         sts.print();  
          sts.start=sts.reverseInNumbers(sts.start, 3);
          sts.print();
-         sts.BubbleSort();
-         sts.print();
+        //  sts.BubbleSort();
+        //  sts.print();
+        System.out.println(sts.nthLast(1));
+        sts.rotateClockwise(4);
+        sts.print();
+        sts.rotateCounterClockwise(4);
+        sts.print();
     }
 }
