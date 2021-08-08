@@ -1,0 +1,16 @@
+
+static Node copyList(Node org)
+{
+  if(org==null){
+    return null;
+  }
+  Node res=new Node(org.data);
+  Node resTmp=res;
+  Node listTmp=org;
+  while(listTmp.next!=null){
+    listTmp=listTmp.next;
+    resTmp.next=new Node(listTmp.data);
+    resTmp=resTmp.next;
+  }
+  return res;
+}
