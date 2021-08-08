@@ -85,6 +85,7 @@ class LinkList{
             preptr.next=n; //it is reflected to ptr then to start
         }  
     }
+    
     LinkList pop(){ //deleting at beggining
         if(start==null){
             System.out.println("Underflow");
@@ -95,6 +96,7 @@ class LinkList{
         temp.next=null; //it is not reflected to start as start has new address
         return temp;
     }
+
     void delete(){
         if(start==null){
             System.out.println("Underflow");
@@ -216,47 +218,21 @@ class LinkList{
         }
         else{
             ptr=start;
-            LinkList even=null;
-            LinkList odd=null;
-            while(ptr!=null){
-                LinkList x=ptr;
-                
-                if(x.info%2==0){
-                    if(even==null){
-                        even=x;
-                    }
-                    else{
-                        even.next=x;
-                        x.next=null;
-                    }
+            LinkList even=new LinkList();
+            LinkList odd=new LinkList();
+            while(ptr!=null){                
+                if(ptr.info%2==0){
+                even.add(ptr.info);
                 }
-                else{ //insert a
-                    if(odd==null){
-                        odd=x;
-                    }
-                    else{
-                        odd.next=x;
-                        x.next=null;
-                    }
+                else{
+                    odd.add(ptr.info);                 
                 }
                 ptr=ptr.next;
             }
-            if(even!=null){
-               while(even!=null){ //make a printLinkList function
-                   System.out.print(even.info+" ");
-                   even=even.next;
-               }
-               System.out.println();
-           }
-
-           if(odd!=null){
-            while(odd!=null){
-                System.out.print(odd.info+" ");
-                odd=odd.next;
-            }
-            System.out.println();
-           }
-            
+        System.out.print("Even Nos ");
+        even.print();
+        System.out.print("Odd Nos ");
+        odd.print();
         }
     }
     
@@ -348,6 +324,26 @@ class LinkList{
         r.next=start;
          t.next=null;
         start=p;        
+    }
+
+    void BubbleSort(){ //find error
+        LinkList ptr,prev=null,end=start;
+        while(end.next!=null){
+            end=end.next;
+        }
+        while(end!=start){
+        ptr=start;
+        while(ptr!=end){
+            if(ptr.next.info<ptr.info){
+                int temp=ptr.info;
+                ptr.info=ptr.next.info;
+                ptr.next.info=temp;
+                prev=ptr;
+                ptr=ptr.next;
+            }
+        }
+        end=prev;
+    }
     }
 
     void print(){
@@ -442,6 +438,10 @@ class SingleLinkedList{
         y.add(3);
         y.print();
         y.add(34,1);
+        y.add(45);
+        y.add(22);
+        y.add(89);
+        y.add(33);
         y.print();
         y.print_Even_Odd();
         LinkList sts=new LinkList();
@@ -467,6 +467,8 @@ class SingleLinkedList{
         sts.rotateBy(2);
         sts.print();  
          sts.start=sts.reverseInNumbers(sts.start, 3);
+         sts.print();
+         sts.BubbleSort();
          sts.print();
     }
 }
