@@ -54,10 +54,11 @@ class Postfix {
         Scanner in = new Scanner(System.in);
         Stack_Array st = new Stack_Array();
         st.push('(');
-        String inp = in.nextLine(); //put input expression in paranthesis
+        String inp = in.nextLine();
+        inp='('+inp+')';
         String out = "";
         int i = 0;
-        while (st.top == -1 || i<inp.length()){
+        while (st.top!=-1 || i<inp.length()){
             char c;
             if (i < inp.length()) {
                 c = inp.charAt(i);

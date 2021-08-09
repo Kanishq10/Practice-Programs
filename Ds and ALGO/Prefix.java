@@ -51,11 +51,12 @@ class Prefix {
         Scanner in = new Scanner(System.in);
         Stack_Array_ st = new Stack_Array_();
         st.push(')');
-        String inp = in.nextLine(); //put input expression in paranthesis
+        String inp = in.nextLine(); 
+        inp='('+inp+')';
         inp=new StringBuilder(inp).reverse().toString();
         String out = "";
         int i = 0;
-        while (st.top == -1 || i<inp.length()){
+        while (st.top != -1 || i<inp.length()){
             char c;
             if (i < inp.length()) {
                 c = inp.charAt(i);
