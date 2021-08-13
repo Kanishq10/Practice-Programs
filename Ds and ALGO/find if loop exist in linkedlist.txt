@@ -17,8 +17,8 @@ static boolean isCircular( Node head) // Efficient method if simple circular lis
     return (node == head);
 }
 
-
-void FindLoop(node head){ //Universal method
+//Universal method
+void FindLoop(node head){ 
     node t=head;
     node r=head;
     while(r!=null && r.next!=null ){
