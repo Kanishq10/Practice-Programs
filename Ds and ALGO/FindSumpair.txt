@@ -1,0 +1,34 @@
+//by sorting and two pointer technique
+=> first sort array
+=> take left=0 and right=arr.length-1 
+=>Loop while left < right{ 
+    if(arr[left]+arr[right]==sum){
+        print pairs or anything you want
+      }
+     if(arr[left]+arr[right]>sum){
+        right--;
+      }
+      else{
+        left++;
+      }
+}//this will only print pair once
+
+
+//using hash
+=>initialise a HashSet ie. s
+=>for(i=0 to end){
+  int temp=sum-arr[i]
+  if(s.contains(temp))
+      print pairs or anything you want
+  else
+      s.add(a[i])
+} //this will also print a pair once 
+
+//for printing pair twice ie. in order 
+=>initialise a HashSet ie. s
+=>add all elements of array in s
+=>for(i=0 to end){
+  int temp=sum-arr[i]
+  if(s.contains(temp))
+      print pairs or anything you want
+ 
