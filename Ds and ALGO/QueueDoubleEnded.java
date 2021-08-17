@@ -109,18 +109,20 @@ class QueueDoubleEnded {
         int inp=in.nextInt();     
         switch(inp){
             case 1:
-            System.out.println("Enter no. of elements");
-            int n=in.nextInt();
             System.out.println("Enter l for left insertion and r for right insertion");
             char ch=in.next().charAt(0);
-            while(n-->0){
+            char more;
+            do{
                 if(ch=='l'){
                     q.insertLeft(in.nextInt());
                 }
                 else{
                     q.insertRight(in.nextInt());
                 }
-            }
+                System.out.println("Want to enter more, y/n");
+                more=in.next().charAt(0);
+            }while(more=='y');
+            System.out.print("\nThe queue is=> ");
             q.print();
             System.out.println("Want to delete y/n");
             ch=in.next().charAt(0);
@@ -137,9 +139,48 @@ class QueueDoubleEnded {
                     System.out.println("Enter l or r for further deletion");
                     ch=in.next().charAt(0);
                 }
+                System.out.print("\nQueue after deletion=> ");
+                q.print(); 
             }
-            System.out.println("Queue after deletion");
-            q.print(); //complete this
-        }  
+            break;
+
+            case 0:
+             System.out.println("Enter l for left insertion,r for right insertion");
+             ch=in.next().charAt(0);
+             while(ch=='l' || ch=='r'){
+                 if(ch=='l'){
+                     q.insertLeft(in.nextInt());
+                 }
+                 else{
+                     q.insertRight(in.nextInt());
+                 }
+                 System.out.println("Enter l or r for further insertion");
+                 ch=in.next().charAt(0);
+             }
+             System.out.print("\nThe queue is=> ");
+             q.print();
+             System.out.println("Want to delete y/n");
+             ch=in.next().charAt(0);
+             if(ch=='y'){
+                 System.out.println("Enter l for left deletion r for right deletion");
+                 ch=in.next().charAt(0);
+                 do{
+                     if(ch=='l'){
+                         q.delLeft();
+                     }
+                     else{
+                         q.delRight();
+                     }
+                     System.out.println("want to delete more y/n");
+                     more=in.next().charAt(0);
+                 }while(more=='y');
+                 System.out.println("\nQueue after deletion=> ");
+                 q.print();
+             }
+             break;
+
+             default:System.out.println("wrong choice");
+        }
+        in.close();  
     }
 }
