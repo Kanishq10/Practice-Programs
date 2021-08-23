@@ -14,7 +14,6 @@ public class Ex12 {
             }
             br.close();
         } catch (Exception e) {
-            //TODO: handle exception
             System.out.println(e);
         }
     }
