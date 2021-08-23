@@ -12,19 +12,6 @@ class QPL{
         next=null;        
     }
 
-
-    // void enqueue(int data){
-    //     QPL n=new QPL(data,rear.priority+1);
-    //     if(front==null && rear==null){
-    //         front=n;
-    //         rear=front;
-    //         return;
-    //     }
-    //     rear.next=n;
-    //     rear=rear.next;
-    // }
-
-
     void enqueue(int data,int priority){
         QPL n=new QPL(data,priority);
         if(front==null && rear==null){
@@ -36,9 +23,13 @@ class QPL{
             n.next=front;
             front=n;
         }
+        else if(front.next==null){
+            rear.next=n;
+            rear=rear.next;
+        }
         else{
             QPL ptr=front;
-            while( ptr.next.priority<=priority && ptr.next!=null){
+            while(ptr.next.priority<=priority && ptr.next!=null){
                 ptr=ptr.next;
             }
             if(ptr.next==null){
@@ -85,10 +76,10 @@ class QPL{
 class QueuePriorityLink {
     public static void main(String[] args) {
         QPL q=new QPL();
-        q.enqueue(2,3);
-        q.enqueue(3,3);
+        q.enqueue(2,1);
+        q.enqueue(3,2);
         q.enqueue(4,3);
-        q.enqueue(5,3);
+        q.enqueue(5,4);
         q.print();
     }   
 }
