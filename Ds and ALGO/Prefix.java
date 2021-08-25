@@ -20,7 +20,7 @@ class Stack_Array_ {
         }
     }
 
-    int peek() { //return char
+    int peek() { 
         if (top == -1) {
             System.out.println("UnderFlow");
             return -1;
