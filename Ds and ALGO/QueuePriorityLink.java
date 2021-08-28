@@ -1,10 +1,8 @@
 class QPL{
     int data,priority;
-    QPL front,rear,next;
+    QPL head,next;
     QPL(){
-        front=null;
-        rear=null;
-        next=null;
+        head=null;
     }
     QPL(int data,int priority){
         this.data=data;
@@ -14,60 +12,41 @@ class QPL{
 
     void enqueue(int data,int priority){
         QPL n=new QPL(data,priority);
-        if(front==null && rear==null){
-            front=n;
-            rear=front;
-            return;
+        if (head==null){
+            head=n;
         }
-        if(front.priority>priority){
-            n.next=front;
-            front=n;
-        }
-        else if(front.next==null){
-            rear.next=n;
-            rear=rear.next;
+        else if(head.priority>n.priority){
+            n.next=head;
+            head=n;
         }
         else{
-            QPL ptr=front;
-            while(ptr.next.priority<=priority && ptr.next!=null){
+            QPL ptr=head;
+            while(ptr.next!=null && ptr.next.priority<=n.priority){  //important, write ptr.next!=null first otherwise it will throw error
                 ptr=ptr.next;
             }
-            if(ptr.next==null){
-                ptr.next=n;
-                rear=n;
-            }
-            else{
-                n.next=ptr.next;
-                ptr.next=n;
-            }
+            n.next=ptr.next;
+            ptr.next=n;
         }
     }
-
-    int dequeue(){
-        if(front==null && rear==null){
-            System.out.println("UnderFlow");
-            return -1;
+    
+    void dequeue(){
+        if(head==null){
+            return;
         }
-        if(front==rear){
-            int x=front.data;
-            front=null;
-            rear=null;
-            return x;
+        else if(head.next==null){
+            head=null;
         }
         else{
-            int x=front.data;
-            front=front.next;
-            return x;
+            head=head.next;
         }
     }
 
     void print(){
-        if(front==null && rear==null){
-            System.out.println("UnderFlow");
+        if(head==null){
             return;
         }
         QPL ptr;
-        for(ptr=front;ptr!=null;ptr=ptr.next){
+        for(ptr=head;ptr!=null;ptr=ptr.next){
             System.out.print(ptr.data+" ");
         }
         System.out.println();
@@ -76,10 +55,17 @@ class QPL{
 class QueuePriorityLink {
     public static void main(String[] args) {
         QPL q=new QPL();
-        q.enqueue(2,1);
+        q.enqueue(2,3);
         q.enqueue(3,2);
-        q.enqueue(4,3);
+        q.enqueue(4,6);
         q.enqueue(5,4);
+        q.enqueue(9, 100);
+        q.enqueue(10, -1);
+        q.enqueue(67, 6);
+        q.print();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
         q.print();
     }   
 }
