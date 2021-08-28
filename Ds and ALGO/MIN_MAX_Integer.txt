@@ -1,0 +1,10 @@
+//minimum and maximum intger in java
+we can get it by:
+Integer.MIN_VALUE;
+Integer.MAX_VALUE;
+
+if we add 1 in MAX_VALUE we will get MIN_VALUE;
+and if we subtract -1 from MIN_VALUE we will get MAX_VALUE
+
+Hence:
+MAX_VALUE = MIN_VALUE-1;
