@@ -1,13 +1,12 @@
 class DCL{
     int info;
-    DCL start=null,next,prev,ptr;
+    DCL start,next,prev,ptr;
     DCL(){
-        this.next=null;
-        this.prev=null;
+        this.start=null;
     }
     DCL(int info){
         this.next=null;
-        this.next=null;
+        this.prev=null;
         this.info=info;
     }
     void add(int info){

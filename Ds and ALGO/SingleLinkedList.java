@@ -1,12 +1,13 @@
 class LinkList{
+    //if we do not define constructors than class will call constructor implicitly and assign null and 0 according to data type
     int info;
-    LinkList next,ptr,start=null,n;
+    LinkList next,ptr,start,n;
     LinkList(){
-        this.next=null;
+        // this.start=null; //even without this program will work as implicit default constructor has given values 
     }    
     LinkList(int info){
         this.info=info;
-        this.next=null;
+        // this.next=null; //even without this program will work as implicit default constructor has given values 
     }    
     
     void add(int info){
@@ -388,6 +389,7 @@ class LinkList{
 class SingleLinkedList{
     public static void main(String[] args) {
         LinkList x=new LinkList();
+        x.pop();
         x.add(15);
         x.add(12);
         x.add(17);

@@ -2,8 +2,7 @@ class Node{
     int info;
     Node next,prev,start=null,ptr;
     Node(){
-        this.next=null;
-        this.prev=null;
+        this.start=null;
     }
     Node(int info){
         this.info=info;
