@@ -3,23 +3,7 @@
 import java.util.*;
 
 
-class RotateArray {
-    static void reverse(int[] arr,int start,int end){
-        int temp;
-        while(start<end){
-            temp=arr[start];
-            arr[start]=arr[end];
-            arr[end]=temp;
-            start++;
-            end--;
-        }
-    }
-    static void rotatem2(int[] arr, int n, int r) {
-        reverse(arr,0,r-1);
-        reverse(arr,r,n-1);
-        reverse(arr,0,n-1);
-    }
-    
+class RotateArray {  
     static void rotatem1(int arr[],int n,int r){
         int temp[]=new int[r];
         for(int i=0;i<r;i++){
@@ -36,6 +20,23 @@ class RotateArray {
             pos++;
         }
     }
+
+    static void reverse(int[] arr,int start,int end){
+        int temp;
+        while(start<end){
+            temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+    }
+    static void rotatem2(int[] arr, int n, int r) {
+        reverse(arr,0,r-1);
+        reverse(arr,r,n-1);
+        reverse(arr,0,n-1);
+    }
+
 	public static void main (String[] args) { //Rotate by n
 		//code
 		Scanner in= new Scanner(System.in);
