@@ -112,6 +112,30 @@ class BST{
         }
     }
     
+    void printInorder(BST root){
+        if(root!=null){
+            printInorder(root.left);
+            System.out.print(root.info+" ");
+            printInorder(root.right);
+        }
+    }
+
+    void printPreorder(BST root){
+        if(root!=null){
+            System.out.print(root.info+" ");
+            printPreorder(root.left);
+            printPreorder(root.right);
+        }
+    }
+
+    void printPostorder(BST root){
+        if(root!=null){
+            printPostorder(root.left);
+            printPostorder(root.right);
+            System.out.print(root.info+" ");
+        }
+    }
+    
 }
 class BinarySearchTree {
     public static void main(String[] args) {
@@ -131,5 +155,16 @@ class BinarySearchTree {
         System.out.println(t.search(122));
         System.out.println(t.search(18));
         System.out.println(t.search(45));
+        t.printInorder(t.root);
+        t.delete(45);
+        t.delete(5);
+        t.delete(22);
+        // t.delete(2); //find error in function
+        System.out.println();
+        t.printInorder(t.root);
+        System.err.println();
+        t.printPreorder(t.root);
+        System.out.println();
+        t.printPostorder(t.root);
     }    
 }
