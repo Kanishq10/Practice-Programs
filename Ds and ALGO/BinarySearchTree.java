@@ -50,9 +50,68 @@ class BST{
         if(ptr==null){
             return -1;
         }
-        return info;
+        return ptr.info;
     }
 
+    void delete(int info){
+        if(root==null){
+            System.out.println("Underflow");
+            return;
+        }
+        BST ptr=root,pre=null;
+        while(ptr!=null && ptr.info!=info){
+            pre=ptr;
+            if(ptr.info<info){
+                ptr=ptr.right;
+            }
+            else{
+                ptr=ptr.right;
+            }
+        }
+        if(ptr==null){
+            System.out.println("No such Element");
+            return;
+        }
+        if(ptr.right==null && ptr.left==null){
+        if(ptr==pre.right){
+            pre.right=null;
+          }  
+        else{
+            pre.left=null;
+          }     
+        }
+        else if(ptr.left!=null && ptr.right==null){
+            if(ptr==pre.right){
+                pre.right=ptr.left;
+            }
+            else{
+                pre.left=ptr.left;
+            }
+        }
+        else if(ptr.left==null && ptr.right!=null){
+            if(ptr==pre.right){
+                pre.right=ptr.right;
+            }
+            else{
+                pre.left=ptr.right;
+            }
+        }
+        else{
+            pre=ptr;
+            BST l=pre.left;
+            ptr=l;
+            while(l.right!=null){
+                ptr=l;
+                ptr=ptr.right;
+            }
+            pre.info=ptr.info;
+            ptr.right=null;
+            if(ptr==l){
+                pre.left=ptr.left;
+            }
+        }
+    }
+    
 }
 class BinarySearchTree {
     public static void main(String[] args) {
