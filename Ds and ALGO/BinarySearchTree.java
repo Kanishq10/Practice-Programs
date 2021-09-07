@@ -58,21 +58,22 @@ class BST{
             System.out.println("Underflow");
             return;
         }
-        BST ptr=root,pre=null;
+        BST ptr=root;
+        BST pre=null;
         while(ptr!=null && ptr.info!=info){
             pre=ptr;
             if(ptr.info<info){
                 ptr=ptr.right;
             }
             else{
-                ptr=ptr.right;
+                ptr=ptr.left;
             }
         }
         if(ptr==null){
             System.out.println("No such Element");
             return;
         }
-        if(ptr.right==null && ptr.left==null){
+        if(ptr.right==null && ptr.left==null){  //leaf node
         if(ptr==pre.right){
             pre.right=null;
           }  
@@ -80,7 +81,7 @@ class BST{
             pre.left=null;
           }     
         }
-        else if(ptr.left!=null && ptr.right==null){
+        else if(ptr.left!=null && ptr.right==null){ //one left child
             if(ptr==pre.right){
                 pre.right=ptr.left;
             }
@@ -88,7 +89,7 @@ class BST{
                 pre.left=ptr.left;
             }
         }
-        else if(ptr.left==null && ptr.right!=null){
+        else if(ptr.left==null && ptr.right!=null){ //one right child
             if(ptr==pre.right){
                 pre.right=ptr.right;
             }
@@ -96,22 +97,80 @@ class BST{
                 pre.left=ptr.right;
             }
         }
-        else{
+        else if(ptr.left!=null && ptr.right!=null){ //two childs 
             pre=ptr;
-            BST l=pre.left;
-            ptr=l;
+            BST l=ptr.left; //here is the approach to find largest in left subtree ,other approach is to find smallest in right subtree
+            ptr=ptr.left;
             while(l.right!=null){
                 ptr=l;
-                ptr=ptr.right;
+                l=l.right;
             }
-            pre.info=ptr.info;
-            ptr.right=null;
-            if(ptr==l){
-                pre.left=ptr.left;
+            if(l==ptr){
+                pre.info=l.info;
+                pre.left=l.left;
+            }
+            else{
+                pre.info=l.info;
+                ptr.right=null;
+            }
+        }
+    }
+
+    int height(BST n){
+        if(n==null){
+            return -1;
+        }
+        else{
+            int lh=height(n.left);
+            int rh=height(n.right);
+            if(lh>rh){
+                return lh+1;
+            }
+            else{
+                return rh+1;
+            }
+        }
+    }
+    int depth(BST n){
+        if(n==null){
+            return 0;
+        }
+        else{
+            int lh=depth(n.left);
+            int rh=depth(n.right);
+            if(lh>rh){
+                return lh+1;
+            }
+            else{
+                return rh+1;
             }
         }
     }
     
+    int BalanceFactor(BST n){
+        if(n==null)
+              return -1;
+        else{
+                  int lh=height(n.left);
+                  int rh=height(n.right);
+                  return lh-rh;
+            }
+    }
+
+    Boolean isBalanced(BST n){
+        if(n==null){
+            return true;
+        }
+        int lh=height(n.left);
+        int rh=height(n.right);
+        if((lh-rh>=-1) && (lh-rh<=1) && isBalanced(n.left) && isBalanced(n.right)){
+            return true;
+        } 
+        else{
+            return false;
+        }
+    }
+
     void printInorder(BST root){
         if(root!=null){
             printInorder(root.left);
@@ -150,21 +209,35 @@ class BinarySearchTree {
         t.insert(53);
         t.insert(122);
         t.insert(7);
+        System.out.println("Height of tree is "+t.height(t.root));
+        System.out.println("Depth of tree is "+t.depth(t.root));
+        System.out.println("BalanceFactor of tree is "+t.BalanceFactor(t.root));
         System.out.println(t.search(7));
-        System.out.println(t.search(3));
+        System.out.println(t.isBalanced(t.root));
+        System.out.println(t.search(2));
         System.out.println(t.search(122));
         System.out.println(t.search(18));
         System.out.println(t.search(45));
-        t.printInorder(t.root);
-        t.delete(45);
-        t.delete(5);
-        t.delete(22);
-        // t.delete(2); //find error in function
-        System.out.println();
-        t.printInorder(t.root);
-        System.err.println();
         t.printPreorder(t.root);
         System.out.println();
         t.printPostorder(t.root);
+        System.out.println();
+        t.printInorder(t.root);
+        t.delete(45);
+        // t.delete(5);  //problem is after deleting root node
+        t.delete(22);
+        System.out.println();
+        t.printInorder(t.root);
+        t.delete(2);
+        t.delete(3);
+        System.out.println();
+        t.printInorder(t.root);
+        System.out.println();
+        BST x=new BST();
+        x.insert(10);
+        x.insert(9);
+        x.insert(11);
+        System.out.println(x.BalanceFactor(x.root));
+        System.out.println(x.isBalanced(x.root));
     }    
 }
