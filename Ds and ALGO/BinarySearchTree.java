@@ -97,7 +97,7 @@ class BST{
                 pre.left=ptr.right;
             }
         }
-        else if(ptr.left!=null && ptr.right!=null){ //two childs 
+        else if(ptr.left!=null && ptr.right!=null){ //two childs  //change it to right
             pre=ptr;
             BST l=ptr.left; //here is the approach to find largest in left subtree ,other approach is to find smallest in right subtree
             ptr=ptr.left;
@@ -131,6 +131,7 @@ class BST{
             }
         }
     }
+
     int depth(BST n){
         if(n==null){
             return 0;
@@ -171,7 +172,123 @@ class BST{
         }
     }
 
-    void printInorder(BST root){
+    BST NCA(BST root,int n1,int n2){  //  nearest/lowest common ancestor ie.nearest lowest common ancestor if one of node is ancestor include it
+        if(root==null)
+            return null;
+        if(n1>root.info && n2>root.info){
+            return NCA(root.right, n1, n2);
+        }
+        if(n1<root.info && n2<root.info){
+            return NCA(root.left, n1, n2);
+        }
+        // if((root.info>n1 && root.info<n2) || (root.info<n1 && root.info>n1)){
+        //     return root;
+        // }
+        // if(root.info==n1 || root.info==n2){
+        //     return root;
+        // }
+        return root;
+    }
+
+    BST LCA(BST root,int n1,int n2){  //least common ancestor //practice on gfg
+        if(root==null){
+            return null;
+        }
+        if((root.info>n1 && root.info<n2) || (root.info<n1 && root.info>n1)){
+            return root;
+        }
+        if(n1>root.info && n2>root.info){
+            return root;
+        }
+        if(root.left.info!=n1 || root.left.info!=n2){
+            return LCA(root.left, n1, n2);
+        }
+        else{
+            return root;
+        }
+    }
+
+    void LLR(BST root){    // Leaf nodes left to right
+        if(root==null){
+            return;
+        }
+        if(root.left==null && root.right==null){
+            System.out.print(root.info+" ");
+        }
+        if(root.left!=null){
+            LLR(root.left);
+        }
+        if(root.right!=null){
+            LLR(root.right);
+        }
+    }
+
+    void LRL(BST root){     // Leaf nodes right to left
+        if(root!=null){
+            if(root.right==null && root.left==null){
+                System.out.print(root.info+" ");
+            }
+            if(root.right!=null){
+                LRL(root.right);
+            }
+            if(root.left!=null){
+                LRL(root.left);
+            }
+        }
+    }
+
+    BST mirror(BST root){
+        if(root==null){
+            return null;
+        }
+        BST l=mirror(root.left);
+        BST r=mirror(root.right);
+        root.left=r;
+        root.right=l;
+        return root;
+    }
+//////////////////////////////////////////////////////
+    void printExterior(BST root){   //print boundary/exterior elements anticlockwise
+        System.out.print(root.info+" ");
+        leftarm(root.left);
+        LLR(root);
+        rightarm(root.right);
+    }
+
+    void leftarm(BST root){
+        if(root==null){
+            return;
+        }
+        if(root.right==null && root.left==null){
+            return;
+        }
+        System.out.print(root.info+" ");
+        if(root.left==null && root.right!=null){
+            leftarm(root.right);
+        }
+        else{
+            leftarm(root.left);
+        }
+    }
+
+    void rightarm(BST root){
+        if(root==null){
+            return;
+        }
+        if(root.left==null && root.right==null){
+            return;     
+        }
+        if(root.left!=null && root.right==null){
+            rightarm(root.left);
+        }
+        else{
+            rightarm(root.right);
+        }
+        System.out.print(root.info+" ");
+    }
+ ////////////////////////////////////////////////////
+ 
+    void printInorder(BST root){ //make it static
         if(root!=null){
             printInorder(root.left);
             System.out.print(root.info+" ");
@@ -232,12 +349,55 @@ class BinarySearchTree {
         t.delete(3);
         System.out.println();
         t.printInorder(t.root);
-        System.out.println();
+        System.out.println("Exterior Nodes");
+        t.printExterior(t.root);
         BST x=new BST();
         x.insert(10);
         x.insert(9);
         x.insert(11);
         System.out.println(x.BalanceFactor(x.root));
         System.out.println(x.isBalanced(x.root));
+        System.out.println((x.LCA(x.root, 9, 11)).info);
+        x.insert(34);
+        x.insert(54);
+        x.insert(12);
+        x.insert(22);
+        x.insert(5);
+        x.insert(6);
+        x.LLR(x.root);
+        System.out.println();
+        x.LRL(x.root);
+        System.out.println();
+        x.printPreorder(x.root);
+        BST mirrorx=x.mirror(x.root);
+        System.out.println("Mirror image of x ");
+        mirrorx.printPreorder(mirrorx);
+        System.out.println();
+        x.printExterior(x.root);
+        BST y=new BST();
+        y.insert(20);
+        y.insert(10);
+        y.insert(12);
+        y.insert(8);
+        y.insert(13);
+        y.insert(22);
+        y.insert(24);
+        y.insert(26);
+        System.out.println();
+        y.printExterior(y.root);  
+        System.out.println();
+        BST test=new BST();
+        test.insert(30);
+        test.insert(15);
+        test.insert(25);  
+        test.insert(24);  
+        test.insert(18);  
+        test.insert(19);  
+        test.insert(40);  
+        test.insert(35);  
+        test.insert(34);  
+        test.insert(36);  
+        test.insert(37);  
+        test.printExterior(test.root);  
     }    
 }
