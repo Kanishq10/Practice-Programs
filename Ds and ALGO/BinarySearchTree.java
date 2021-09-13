@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 class BST{
     int info;
     BST right,left,root;
@@ -172,7 +175,7 @@ class BST{
         }
     }
 
-    BST NCA(BST root,int n1,int n2){  //  nearest/lowest common ancestor ie.nearest lowest common ancestor if one of node is ancestor include it
+    BST NCA(BST root,int n1,int n2){  //nearest/lowest common ancestor ie.nearest lowest common ancestor if one of node is ancestor include it
         if(root==null)
             return null;
         if(n1>root.info && n2>root.info){
@@ -286,9 +289,27 @@ class BST{
         }
         System.out.print(root.info+" ");
     }
- ////////////////////////////////////////////////////
- 
-    void printInorder(BST root){ //make it static
+ ////////////////////////////////////////////////////   
+}
+
+class BinarySearchTree {
+    static void printLevelOrder(BST root){
+        Queue<BST> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            BST curr=q.peek();
+            q.remove();
+            System.out.print(curr.info+" ");
+            if(curr.left!=null){
+                q.add(curr.left);
+            }
+            if(curr.right!=null){
+                q.add(curr.right);
+            }
+        }
+    }
+
+    static void printInorder(BST root){ 
         if(root!=null){
             printInorder(root.left);
             System.out.print(root.info+" ");
@@ -296,7 +317,7 @@ class BST{
         }
     }
 
-    void printPreorder(BST root){
+    static void printPreorder(BST root){
         if(root!=null){
             System.out.print(root.info+" ");
             printPreorder(root.left);
@@ -304,16 +325,14 @@ class BST{
         }
     }
 
-    void printPostorder(BST root){
+    static void printPostorder(BST root){
         if(root!=null){
             printPostorder(root.left);
             printPostorder(root.right);
             System.out.print(root.info+" ");
         }
     }
-    
-}
-class BinarySearchTree {
+
     public static void main(String[] args) {
         BST t=new BST();
         t.insert(5);
@@ -335,20 +354,20 @@ class BinarySearchTree {
         System.out.println(t.search(122));
         System.out.println(t.search(18));
         System.out.println(t.search(45));
-        t.printPreorder(t.root);
+        printPreorder(t.root);
         System.out.println();
-        t.printPostorder(t.root);
+        printPostorder(t.root);
         System.out.println();
-        t.printInorder(t.root);
+        printInorder(t.root);
         t.delete(45);
         // t.delete(5);  //problem is after deleting root node
         t.delete(22);
         System.out.println();
-        t.printInorder(t.root);
+        printInorder(t.root);
         t.delete(2);
         t.delete(3);
         System.out.println();
-        t.printInorder(t.root);
+        printInorder(t.root);
         System.out.println("Exterior Nodes");
         t.printExterior(t.root);
         BST x=new BST();
@@ -368,10 +387,10 @@ class BinarySearchTree {
         System.out.println();
         x.LRL(x.root);
         System.out.println();
-        x.printPreorder(x.root);
+        printPreorder(x.root);
         BST mirrorx=x.mirror(x.root);
         System.out.println("Mirror image of x ");
-        mirrorx.printPreorder(mirrorx);
+        printPreorder(mirrorx);
         System.out.println();
         x.printExterior(x.root);
         BST y=new BST();
@@ -398,6 +417,8 @@ class BinarySearchTree {
         test.insert(34);  
         test.insert(36);  
         test.insert(37);  
-        test.printExterior(test.root);  
+        test.printExterior(test.root); 
+        System.out.println();
+        printLevelOrder(test.root); 
     }    
 }
