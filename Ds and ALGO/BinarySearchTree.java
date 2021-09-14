@@ -56,13 +56,13 @@ class BST{
         return ptr.info;
     }
 
-    void delete(int info){
+    void delete(int info){  //add a condition to handle if root or correct it
         if(root==null){
             System.out.println("Underflow");
             return;
         }
         BST ptr=root;
-        BST pre=null;
+        BST pre=root;
         while(ptr!=null && ptr.info!=info){
             pre=ptr;
             if(ptr.info<info){
@@ -100,7 +100,7 @@ class BST{
                 pre.left=ptr.right;
             }
         }
-        else if(ptr.left!=null && ptr.right!=null){ //two childs  //change it to right
+        else if(ptr.left!=null && ptr.right!=null){ //two childs  
             pre=ptr;
             BST l=ptr.left; //here is the approach to find largest in left subtree ,other approach is to find smallest in right subtree
             ptr=ptr.left;
@@ -121,7 +121,7 @@ class BST{
 
     int height(BST n){
         if(n==null){
-            return -1;
+            return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases
         }
         else{
             int lh=height(n.left);
@@ -289,21 +289,68 @@ class BST{
         }
         System.out.print(root.info+" ");
     }
- ////////////////////////////////////////////////////   
+ //////////////////////////////////////////////////// 
+
+ //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+    void printLevelOrderLevelWise(BST root){ //optimise 
+        int height=height(root);
+        for(int i=1;i<=height;i++){
+            levelwise(root,i);
+            System.out.println(); //remove this for output in one line
+        }
+    }
+
+    void levelwise(BST root,int l){
+        if(root==null){
+            return;
+        }
+        if(l==1){
+            System.out.print(root.info+" ");
+        }
+        else if(l>1){
+            levelwise(root.left, l-1);
+            levelwise(root.right, l-1);
+        }
+    }
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    
 }
 
 class BinarySearchTree {
-    static void printLevelOrder(BST root){
-        Queue<BST> q=new LinkedList<>();
+    static void printInternalNodes(BST root){
+        if(root==null){
+            return;
+        }
+        Queue<BST> q = new LinkedList<>();
         q.add(root);
-        while(!q.isEmpty()){
-            BST curr=q.peek();
+        while (!q.isEmpty()) {
+            BST curr = q.peek();
             q.remove();
-            System.out.print(curr.info+" ");
-            if(curr.left!=null){
+            if(curr.right!=null || curr.left!=null){
+                System.out.print(curr.info + " ");
+            }
+            if (curr.left != null) {
                 q.add(curr.left);
             }
-            if(curr.right!=null){
+            if (curr.right != null) {
+                q.add(curr.right);
+            }
+        }
+    }
+
+    static void printLevelOrder(BST root) {
+        if(root==null){
+            return;
+        }
+        Queue<BST> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            BST curr = q.peek();
+            q.remove();
+            System.out.print(curr.info + " ");
+            if (curr.left != null) {
+                q.add(curr.left);
+            }
+            if (curr.right != null) {
                 q.add(curr.right);
             }
         }
@@ -358,16 +405,20 @@ class BinarySearchTree {
         System.out.println();
         printPostorder(t.root);
         System.out.println();
+        System.out.println("Before deleting: ");
         printInorder(t.root);
         t.delete(45);
-        // t.delete(5);  //problem is after deleting root node
+        t.delete(5);  //problem is after deleting root node
         t.delete(22);
         System.out.println();
+        System.out.println("After deleting 45,5,22: ");
         printInorder(t.root);
-        t.delete(2);
+        t.delete(2); //bugs
         t.delete(3);
         System.out.println();
-        printInorder(t.root);
+        System.out.println("After deleting 2,3: ");
+        printInorder(t.root);  
+        System.out.println();
         System.out.println("Exterior Nodes");
         t.printExterior(t.root);
         BST x=new BST();
@@ -420,5 +471,11 @@ class BinarySearchTree {
         test.printExterior(test.root); 
         System.out.println();
         printLevelOrder(test.root); 
+        System.out.println();
+        printInternalNodes(test.root);
+        System.out.println();
+        test.LLR(test.root);
+        System.out.println();
+        test.printLevelOrderLevelWise(test.root);
     }    
 }
