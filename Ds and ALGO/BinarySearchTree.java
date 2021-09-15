@@ -292,7 +292,7 @@ class BST{
  //////////////////////////////////////////////////// 
 
  //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
-    void printLevelOrderLevelWise(BST root){ //optimise 
+    void printLevelOrderLevelWise(BST root){  //recursive approach
         int height=height(root);
         for(int i=1;i<=height;i++){
             levelwise(root,i);
@@ -300,6 +300,13 @@ class BST{
         }
     }
 
+    void printLevelOrderLevelWiseReverse(BST root){
+        int height=height(root);
+        for(int i=height;i>=1;i--){
+            levelwise(root, i);
+            System.out.println(); 
+        }
+    }
     void levelwise(BST root,int l){
         if(root==null){
             return;
@@ -312,7 +319,67 @@ class BST{
             levelwise(root.right, l-1);
         }
     }
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   
+
+//######################################################
+    void spiralprint(BST root){    //recursive approach for spiral traverse
+        int height=height(root);
+        int flag=1;
+        for(int i=1;i<=height;i++){
+            if(flag==0){
+                levelwiseleftToright(root,i);
+                flag=1;
+            }
+            else{
+                levelwiserightToleft(root, i);
+                flag=0;
+            }            
+            System.out.println(); 
+        }
+    }
+
+    void spiralprintReverse(BST root){
+        int height=height(root);
+        int flag=1;
+        for(int i=height;i>=1;i--){
+            if(flag==1){
+                levelwiseleftToright(root,i);
+                flag=0;
+            }
+            else{
+                levelwiserightToleft(root, i);
+                flag=1;
+            }            
+            System.out.println(); 
+        }
+    }
+
+    void levelwiseleftToright(BST root,int l){
+        if(root==null){
+            return;
+        }
+        if(l==1){
+            System.out.print(root.info+" ");
+        }
+        else if(l>1){
+            levelwiseleftToright(root.left, l-1);
+            levelwiseleftToright(root.right, l-1);
+        }
+    }
+
+    void levelwiserightToleft(BST root,int l){
+        if(root==null){
+            return;
+        }
+        if(l==1){
+            System.out.print(root.info+" ");
+        }
+        else if(l>1){
+            levelwiserightToleft(root.right, l-1);
+            levelwiserightToleft(root.left, l-1);
+        }
+    }
+//#####################################################
 }
 
 class BinarySearchTree {
@@ -337,7 +404,7 @@ class BinarySearchTree {
         }
     }
 
-    static void printLevelOrder(BST root) {
+    static void printLevelOrder(BST root) {  //without recursion
         if(root==null){
             return;
         }
@@ -352,6 +419,34 @@ class BinarySearchTree {
             }
             if (curr.right != null) {
                 q.add(curr.right);
+            }
+        }
+    }
+
+    static void printLevelOrderLineByLine(BST root){ //this is without recursion
+        if(root==null){
+            return;
+        }
+        Queue<BST> q=new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            BST curr=q.peek();
+            q.remove();
+            if(curr==null){
+                if(!q.isEmpty()){
+                    q.add(null);
+                    System.out.println();
+                }
+            }
+            else{
+                if(curr.left!=null){
+                    q.add(curr.left);
+                }
+                if(curr.right!=null){
+                    q.add(curr.right);
+                }
+                System.out.print(curr.info+" ");
             }
         }
     }
@@ -468,6 +563,33 @@ class BinarySearchTree {
         test.insert(34);  
         test.insert(36);  
         test.insert(37);  
+        test.insert(54);
+        test.insert(13);
+        test.insert(11);
+        test.insert(65);
+        test.insert(62);
+        test.insert(86);
+        test.insert(2);
+        test.insert(26);
+        test.insert(56);
+        test.insert(87);
+        test.insert(43);
+        test.insert(73);
+        test.insert(82);
+        test.insert(97);
+        test.insert(101);
+        test.insert(80);
+        test.insert(99);
+        test.insert(91);
+        test.insert(82);
+        test.insert(110);
+        test.insert(53);
+        test.insert(27);
+        test.insert(21);
+        test.insert(66);
+        test.insert(26);
+        test.insert(32);
+        test.insert(23);
         test.printExterior(test.root); 
         System.out.println();
         printLevelOrder(test.root); 
@@ -477,5 +599,14 @@ class BinarySearchTree {
         test.LLR(test.root);
         System.out.println();
         test.printLevelOrderLevelWise(test.root);
+        System.out.println();
+        printLevelOrderLineByLine(test.root);
+        System.out.println();
+        System.out.println();
+        test.printLevelOrderLevelWiseReverse(test.root);
+        System.out.println();
+        test.spiralprint(test.root);
+        System.out.println();
+        test.spiralprintReverse(test.root);
     }    
 }
