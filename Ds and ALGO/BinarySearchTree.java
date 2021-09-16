@@ -380,6 +380,59 @@ class BST{
         }
     }
 //#####################################################
+
+    BST rightRotate(BST root){
+        if(root==null){
+            return null;
+        }
+        if(root.left!=null){
+            BST temp=root;
+            root=root.left;
+            temp.left=root.right;
+            root.right=temp;
+        }
+        return root;
+    }
+
+    BST rightSkew(BST root) {  //some error in output
+        if (root == null) {
+            return null;
+        }
+        while (root.left != null) {
+            BST temp = root;
+            root = root.left;
+            temp.left = root.right;
+            root.right = temp;
+        }
+        return root;
+    }
+
+    BST leftRotate(BST root){
+        if(root==null){
+            return null;
+        }
+        if(root.right!=null){
+            BST temp=root;
+            root=root.right;
+            temp.right=root.left;
+            root.left=temp;
+        }
+        return root;
+    }
+
+    BST leftSkew(BST root){ //there is some error in output
+        if(root==null){
+            return null;
+        }
+        while(root.right!=null){
+            BST temp=root;
+            root=root.right;
+            temp.right=root.left;
+            root.left=temp;
+        }
+        return root;
+    }
+
 }
 
 class BinarySearchTree {
@@ -608,5 +661,29 @@ class BinarySearchTree {
         test.spiralprint(test.root);
         System.out.println();
         test.spiralprintReverse(test.root);
+        System.out.println("Before rotation: ");
+        printInorder(test.root);
+        System.out.println();
+        printLevelOrderLineByLine(test.root);
+        System.out.println("\nAfter rotation: ");
+        BST r=test.rightRotate(test.root);
+        printInorder(r);
+        System.out.println();
+        printLevelOrderLineByLine(r);
+        BST rs=test.rightSkew(test.root);
+        System.out.println("\nRightSkew tree");
+        printInorder(rs);
+        System.out.println();
+        printLevelOrderLineByLine(rs);
+        BST l=test.leftRotate(test.root);
+        BST ls=test.leftSkew(test.root);
+        System.out.println("\nleft rotate");
+        printInorder(l);
+        System.out.println();
+        printLevelOrderLineByLine(l);
+        System.out.println("\nleft skew");
+        printInorder(ls);
+        System.out.println();
+        printLevelOrderLineByLine(ls);
     }    
 }
