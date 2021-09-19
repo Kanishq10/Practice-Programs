@@ -56,69 +56,109 @@ class BST{
         return ptr.info;
     }
 
-    void delete(int info){  //add a condition to handle if root or correct it
+    void delete(int info){  //corrected but minor bugs
         if(root==null){
             System.out.println("Underflow");
             return;
         }
-        BST ptr=root;
-        BST pre=root;
-        while(ptr!=null && ptr.info!=info){
-            pre=ptr;
-            if(ptr.info<info){
-                ptr=ptr.right;
+        else if(root.info==info){
+            if(root.left==null && root.right==null){
+                root=null;
             }
-            else{
-                ptr=ptr.left;
+            else if(root.left!=null && root.right==null){
+                root=root.left;
+            }
+            else if(root.left==null && root.right!=null){
+                root=root.right;
+            }
+            else if(root.left!=null && root.right!=null){
+                BST pre=root.right,ptr=root.right;   //approach is to find smallest in right subtree
+                while(ptr.left!=null){
+                    pre=ptr;
+                    ptr=ptr.left;
+                }
+                if(ptr==pre){
+                    root.info=ptr.info;
+                    root.right=ptr.right;
+                }
+                else{
+                    root.info=ptr.info;
+                    if(ptr.right!=null){
+                        pre.left=ptr.right;
+                    }
+                    else{
+                        pre.left=null;
+                    }
+
+                }
             }
         }
-        if(ptr==null){
-            System.out.println("No such Element");
-            return;
-        }
-        if(ptr.right==null && ptr.left==null){  //leaf node
-        if(ptr==pre.right){
-            pre.right=null;
-          }  
         else{
-            pre.left=null;
-          }     
-        }
-        else if(ptr.left!=null && ptr.right==null){ //one left child
+            BST ptr=root;
+            BST pre=root;
+            while(ptr!=null && ptr.info!=info){
+                pre=ptr;
+                if(ptr.info<info){
+                    ptr=ptr.right;
+                }
+                else{
+                    ptr=ptr.left;
+                }
+            }
+            if(ptr==null){
+                System.out.println("No such Element");
+                return;
+            }
+            if(ptr.right==null && ptr.left==null){  //leaf node
             if(ptr==pre.right){
-                pre.right=ptr.left;
-            }
+                pre.right=null;
+              }  
             else{
-                pre.left=ptr.left;
+                pre.left=null;
+              }     
             }
-        }
-        else if(ptr.left==null && ptr.right!=null){ //one right child
-            if(ptr==pre.right){
-                pre.right=ptr.right;
+            else if(ptr.left!=null && ptr.right==null){ //one left child
+                if(ptr==pre.right){
+                    pre.right=ptr.left;
+                }
+                else{
+                    pre.left=ptr.left;
+                }
             }
-            else{
-                pre.left=ptr.right;
+            else if(ptr.left==null && ptr.right!=null){ //one right child
+                if(ptr==pre.right){
+                    pre.right=ptr.right;
+                }
+                else{
+                    pre.left=ptr.right;
+                }
             }
-        }
-        else if(ptr.left!=null && ptr.right!=null){ //two childs  
-            pre=ptr;
-            BST l=ptr.left; //here is the approach to find largest in left subtree ,other approach is to find smallest in right subtree
-            ptr=ptr.left;
-            while(l.right!=null){
-                ptr=l;
-                l=l.right;
-            }
-            if(l==ptr){
-                pre.info=l.info;
-                pre.left=l.left;
-            }
-            else{
-                pre.info=l.info;
-                ptr.right=null;
+            else if(ptr.left!=null && ptr.right!=null){ //two childs  
+                pre=ptr;
+                ptr=ptr.left;
+                BST l=pre.left; //here is the approach to find largest in left subtree 
+                while(l.right!=null){
+                    ptr=l;
+                    l=l.right;
+                }
+                if(l==ptr){
+                    pre.info=l.info;
+                    pre.left=l.left;
+                }
+                else{
+                    pre.info=l.info;
+                    if(l.left!=null){
+                        ptr.right=l.left;
+                    }
+                    else{
+                        ptr.right=null;
+                    }
+                    
+                }
             }
         }
     }
-
+ 
     int height(BST n){
         if(n==null){
             return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases
@@ -543,6 +583,7 @@ class BinarySearchTree {
         System.out.println("Height of tree is "+t.height(t.root));
         System.out.println("Depth of tree is "+t.depth(t.root));
         System.out.println("BalanceFactor of tree is "+t.BalanceFactor(t.root));
+        System.out.println(t.unBalancedNode(t.root).info);
         System.out.println(t.search(7));
         System.out.println(t.isBalanced(t.root));
         System.out.println(t.search(2));
@@ -561,14 +602,14 @@ class BinarySearchTree {
         System.out.println();
         System.out.println("After deleting 45,5,22: ");
         printInorder(t.root);
-        t.delete(2); //bugs
+        t.delete(2); //solved
         t.delete(3);
         System.out.println();
         System.out.println("After deleting 2,3: ");
         printInorder(t.root);  
         System.out.println();
         System.out.println("Exterior Nodes");
-        t.printExterior(t.root);
+        t.printExterior(t.root); //bug
         BST x=new BST();
         x.insert(10);
         x.insert(9);
@@ -685,5 +726,16 @@ class BinarySearchTree {
         printInorder(ls);
         System.out.println();
         printLevelOrderLineByLine(ls);
+        System.out.println("\n");
+        BST p=new BST();
+        p.insert(20);
+        p.insert(15);
+        p.insert(16);
+        p.insert(19);
+        p.insert(18);
+        printLevelOrder(p.root);
+        p.delete(20);
+        System.out.println();
+        printLevelOrder(p.root);
     }    
 }
