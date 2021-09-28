@@ -37,6 +37,20 @@ class BST{
         }
     }
 
+    BST insertRec(BST root,int info){ //insert node recursively
+        if(root==null){
+            root=new BST(info);
+            return root;
+        }
+        if(info>root.info){
+            root.right=insertRec(root.right,info);
+        }
+        else{
+            root.left=insertRec(root.left,info);
+        }
+        return root;
+    }
+
     int search(int info){
         if(root==null){
             return -1;
@@ -583,7 +597,6 @@ class BinarySearchTree {
         System.out.println("Height of tree is "+t.height(t.root));
         System.out.println("Depth of tree is "+t.depth(t.root));
         System.out.println("BalanceFactor of tree is "+t.BalanceFactor(t.root));
-        System.out.println(t.unBalancedNode(t.root).info);
         System.out.println(t.search(7));
         System.out.println(t.isBalanced(t.root));
         System.out.println(t.search(2));
