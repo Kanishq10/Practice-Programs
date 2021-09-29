@@ -5,23 +5,13 @@ class LHeap{  //min heap
     void insert(int n){
         l.add(n);
         int curr=l.size()-1;
-        while (curr>0) {
-            int pi; //parents's index
-            if(curr%2==0){
-                pi=(curr/2)-1;
-            }
-            else{
-                pi=(curr-1)/2;
-            }
-            if(l.get(pi)>l.get(curr)){   //if parent greater than child ,swap
-                Integer temp=l.get(curr);
-                l.set(curr,l.get(pi));
-                l.set(pi, temp);
-                curr=pi;
-            }
-            else{
-                break;
-            }
+        int pi=(curr-1)/2; //this formula can also be used for both even and odd
+        while (curr > 0 && (l.get(pi) > l.get(curr))) {
+            Integer temp = l.get(curr);   // if parent greater than child ,swap
+            l.set(curr, l.get(pi));
+            l.set(pi, temp);
+            curr = pi;
+            pi=(curr-1)/2;
         }
     }
 
@@ -48,19 +38,12 @@ class LHeap{  //min heap
                 l.set(L, temp);
                 curr=L;
             }
-            else{
-                if(l.get(L)<l.get(R)){
-                    Integer temp=l.get(curr);
-                    l.set(curr,l.get(L));
-                    l.set(L, temp);
-                    curr=L;
-                }
-                else{
-                    Integer temp=l.get(curr);
-                    l.set(curr,l.get(R));
-                    l.set(R ,temp);
-                    curr=R;
-                }
+            else{ //both child
+                int min=l.get(L)>l.get(R)? R:L;
+                Integer temp=l.get(curr);
+                l.set(curr,l.get(min));
+                l.set(min, temp);
+                curr=min;
             }
             L=curr*2+1;
             R=curr*2+2;
@@ -87,5 +70,19 @@ class HeapArrayListMin {
         h.print();
         h.delete(10);
         h.print();
+        LHeap t=new LHeap();
+        t.insert(12);
+        t.insert(14);
+        t.insert(4);
+        t.insert(5);
+        t.insert(8);
+        t.insert(7);
+        t.insert(6);
+        t.insert(9);
+        t.insert(2);
+        t.insert(10);
+        t.print();
+        t.delete(2);
+        t.print();
     }    
 }
