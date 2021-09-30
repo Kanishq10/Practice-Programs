@@ -70,22 +70,22 @@ class BST{
         return ptr.info;
     }
 
-    void delete(int info){  //corrected but minor bugs
+    void delete(int info){  //corrected 
         if(root==null){
             System.out.println("Underflow");
             return;
         }
         else if(root.info==info){
-            if(root.left==null && root.right==null){
+            if(root.left==null && root.right==null){  //no child
                 root=null;
             }
-            else if(root.left!=null && root.right==null){
+            else if(root.left!=null && root.right==null){  //one left child
                 root=root.left;
             }
-            else if(root.left==null && root.right!=null){
+            else if(root.left==null && root.right!=null){   //one right child
                 root=root.right;
             }
-            else if(root.left!=null && root.right!=null){
+            else if(root.left!=null && root.right!=null){ //two childs
                 BST pre=root.right,ptr=root.right;   //approach is to find smallest in right subtree
                 while(ptr.left!=null){
                     pre=ptr;
@@ -97,13 +97,7 @@ class BST{
                 }
                 else{
                     root.info=ptr.info;
-                    if(ptr.right!=null){
-                        pre.left=ptr.right;
-                    }
-                    else{
-                        pre.left=null;
-                    }
-
+                    pre.left=ptr.right;
                 }
             }
         }
@@ -149,7 +143,7 @@ class BST{
             }
             else if(ptr.left!=null && ptr.right!=null){ //two childs  
                 pre=ptr;
-                ptr=ptr.left;
+                ptr=pre.left;
                 BST l=pre.left; //here is the approach to find largest in left subtree 
                 while(l.right!=null){
                     ptr=l;
@@ -161,18 +155,52 @@ class BST{
                 }
                 else{
                     pre.info=l.info;
-                    if(l.left!=null){
-                        ptr.right=l.left;
-                    }
-                    else{
-                        ptr.right=null;
-                    }
-                    
+                    ptr.right=l.left;                    
                 }
             }
         }
     }
- 
+
+    BST deleteRec(BST root,int key){
+        if(root==null){
+            return null;
+        }
+        else if(key<root.info){
+            root.left=deleteRec(root.left,key);
+        }
+        else if(key>root.info){
+            root.right=deleteRec(root.right, key);
+        }
+        else{
+            BST temp=null;
+            if(root.left==null && root.right==null){
+                return null;
+            }
+            else if(root.left!=null){
+                temp=root.left;
+                return temp;
+            }
+            else if(root.left==null){
+                temp=root.right;
+                return temp;
+            }
+            else{
+                temp=maxnode(root);
+                root.info=temp.info;
+                root.left=deleteRec(root.left, temp.info);
+            }
+        }
+        return root;
+    }
+
+    BST maxnode(BST root){
+        BST curr=root;
+        while(curr.right!=null){
+            root=root.right;
+        }
+        return root;
+    }
+
     int height(BST n){
         if(n==null){
             return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases
@@ -750,5 +778,11 @@ class BinarySearchTree {
         p.delete(20);
         System.out.println();
         printLevelOrder(p.root);
+        BST st=new BST(20);
+        st.insertRec(st,11);
+        st.insertRec(st, 25);
+        st.insertRec(st,62);
+        System.out.println("\n");
+        printInorder(st);
     }    
 }
