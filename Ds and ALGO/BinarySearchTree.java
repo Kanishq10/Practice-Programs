@@ -203,7 +203,7 @@ class BST{
 
     int height(BST n){
         if(n==null){
-            return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases
+            return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases,problem will rise in printlevelorderlevelwise
         }
         else{
             int lh=height(n.left);
@@ -472,6 +472,44 @@ class BST{
             root=root.left;
             temp.left=root.right;
             root.right=temp;
+        }
+        return root;
+    }
+
+    BST rightRotate(int data){
+        if(root==null){
+            return null;
+        }
+        if(root.info==data){
+            if(root.left!=null){
+                BST l=root.left;
+                root.left=l.right;
+                l.right=root;
+                root=l;
+            }
+        }
+        else{
+            BST pre=root,ptr=root;
+            while(ptr.info!=data){
+                pre=ptr;
+                if(data>ptr.info){
+                    ptr=ptr.right;
+                }
+                else{
+                    ptr=ptr.left;
+                }
+            }
+            if(ptr!=null && ptr.left!=null){
+                BST l=ptr.left;
+                ptr.left=l.right;
+                l.right=ptr;
+                if(ptr.info<pre.info){
+                    pre.left=l;
+                }
+                else{
+                    pre.right=l;
+                }
+            }
         }
         return root;
     }
@@ -784,5 +822,27 @@ class BinarySearchTree {
         st.insertRec(st,62);
         System.out.println("\n");
         printInorder(st);
+        BST f=new BST();
+        f.insert(10);
+        f.insert(14);
+        f.insert(5);
+        System.out.println("\n"+f.BalanceFactor(f.root));
+        System.out.println(f.height(f.root));
+        f.insert(3);
+        f.insert(17);
+        f.insert(18);
+        f.insert(11);
+        f.insert(9);
+        f.insert(6);
+        f.insert(8);
+        f.insert(2);
+        f.insert(34);
+        f.insert(12);
+        f.insert(24);
+        printInorder(f.root);
+        System.out.println();
+        f.printLevelOrderLevelWise(f.root);
+        BST fn=f.rightRotate(8);
+        printInorder(fn);
     }    
 }
