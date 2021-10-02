@@ -12,6 +12,6 @@ class X{
 
 int main(){
     X f;
-    f.print();
+    f.print(); 
     return 0;
 }
