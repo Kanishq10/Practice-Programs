@@ -1,24 +1,29 @@
+import java.util.*;
+
 class AVL{
     int info;
-    AVL left,right,root;
+    AVL root,left,right;
     AVL(){
-        this.root=null;
+        left=null;
+        right=null;
     }
     AVL(int info){
         this.info=info;
-        this.left=null;
-        this.right=null;
+        left=null;
+        right=null;
     }
 
-    void insert(int info){
+    AVL insert(AVL root,int info){
         AVL n=new AVL(info);
         if(root==null){
             root=n;
-            return;
+            return root;
         }
+        Stack<AVL> st=new Stack<>();
         AVL prev=null,ptr=root;
         while(ptr!=null){
             prev=ptr;
+            st.push(prev);
             if(ptr.info<n.info){
                 ptr=ptr.right;
             }
@@ -32,75 +37,42 @@ class AVL{
         else{
             prev.left=n;
         }
-        AVL targ=checkBalance(root);
-        if(targ!=null){
-            int bf=BalanceFactor(targ);
-        //Left Left Case
-        if (bf > 1 && info < targ.left.info)
-            rightRotate(targ);
- 
-        // Right Right Case
-        if (bf < -1 && info > targ.right.info)
-            leftRotate(targ);
- 
-        // Left Right Case
-        if (bf > 1 && info > targ.left.info) {
-            targ.left = leftRotate(targ.left);
-            rightRotate(targ);
-        }
- 
-        // Right Left Case
-        if (bf < -1 && info < targ.right.info) {
-            targ.right = rightRotate(targ.right);
-            leftRotate(targ);
-    }
-        }
-        
-}
-
-    int height(AVL n){
-        if(n==null){
-            return 0;     
-        }
-        else{
-            int lh=height(n.left);
-            int rh=height(n.right);
-            if(lh>rh){
-                return lh+1;
+        st=refine(st);
+        if(!st.isEmpty()){
+            AVL temp=st.peek();
+            if(n.info<temp.info){
+                if(n.info<temp.left.info){
+                    leftLeft(st);
+                }
+                else{
+                    
+                }
             }
             else{
-                return rh+1;
+                if(n.info>temp.right.info){
+                    rightRight(st);
+                }
+                else{
+
+                }
             }
+        }
+        return root;
+    }
+
+    void rightRight(Stack<AVL> st){
+        AVL x=leftRotate(st.pop());
+        if(!st.isEmpty()){
+            AVL ance=st.pop();
+            ance.right=x;
         }
     }
 
-    int BalanceFactor(AVL n){
-        if(n==null)
-              return -1;
-        else{
-                  int lh=height(n.left);
-                  int rh=height(n.right);
-                  return lh-rh;
-            }
-    }
-
-    AVL checkBalance(AVL n){
-        if(n==null){
-            return null;
-        }
-        if(checkBalance(n.left)!=null){
-            return checkBalance(n.left);
-        }
-        if(checkBalance(n.right)!=null){
-            return checkBalance(n.right);
-        }
-        int lh=height(n.left);
-        int rh=height(n.right);
-        if((lh-rh>=-1) && (lh-rh<=1)){
-            return null;
-        } 
-        else{
-            return n;
+    void leftLeft(Stack<AVL> st){
+        AVL x=rightRotate(st.pop());
+        if(!st.isEmpty()){
+            AVL ance=st.pop();
+            ance.left=x;
         }
     }
 
@@ -109,10 +81,10 @@ class AVL{
             return null;
         }
         if(root.left!=null){
-            AVL temp=root;
-            root=root.left;
-            temp.left=root.right;
-            root.right=temp;
+            AVL l=root.left;
+            root.left=l.right;
+            l.right=root;
+            root=l;
         }
         return root;
     }
@@ -122,20 +94,61 @@ class AVL{
             return null;
         }
         if(root.right!=null){
-            AVL temp=root;
-            root=root.right;
-            temp.right=root.left;
-            root.left=temp;
+            AVL r=root.right;
+            root.right=r.left;
+            r.left=root;
+            root=r;
         }
         return root;
     }
+    
+    Stack<AVL> refine(Stack<AVL> st){
+        while(!st.isEmpty()){
+            int bf=balancefactor(st.peek());
+            if(bf<-1 || bf>1){
+                break;
+            }
+            st.pop();
+        }
+        return st;
+    }
 
+    int balancefactor(AVL root){
+        if(root==null){
+            return -1;
+        }
+        else{
+            int lh=height(root.left);
+            int rh=height(root.right);
+            return lh-rh;
+        }
+    }
+
+    int height(AVL root){
+        if(root==null){
+            return 0;
+        }
+        int l=height(root.left);
+        int r=height(root.right);
+        return (l>r)?l+1:r+1;
+    }
 }
 class AVLtree {
+    static void printPreorder(AVL root){
+        if(root!=null){
+            System.out.print(root.info+" ");
+            printPreorder(root.left);
+            printPreorder(root.right);
+        }
+    }
     public static void main(String[] args) {
-        AVL test=new AVL();
-        test.insert(10);
-        test.insert(5);
-        test.insert(4);
-    }    
+        AVL x=new AVL();
+        x.root=x.insert(x.root,10);
+        x.root=x.insert(x.root,20);
+        x.root=x.insert(x.root,30);
+        x.root=x.insert(x.root,50);
+        x.root=x.insert(x.root,60);
+        // printLevelOrderLineByLine(x.root);
+        printPreorder(x.root);
+    }
 }
