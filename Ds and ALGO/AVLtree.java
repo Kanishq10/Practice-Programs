@@ -6,9 +6,11 @@ class AVL{
     AVL(){
         left=null;
         right=null;
+        root=null;
     }
     AVL(int info){
         this.info=info;
+        root=null;
         left=null;
         right=null;
     }
@@ -20,7 +22,7 @@ class AVL{
             return root;
         }
         Stack<AVL> st=new Stack<>();
-        AVL prev=null,ptr=root;
+        AVL prev=root,ptr=root;
         while(ptr!=null){
             prev=ptr;
             st.push(prev);
@@ -33,16 +35,19 @@ class AVL{
         }
         if(n.info>prev.info){
             prev.right=n;
+            // st.peek().right=n;
         }
         else{
             prev.left=n;
+            // st.peek().left=n;
         }
         st=refine(st);
         if(!st.isEmpty()){
+            System.out.println("YO");
             AVL temp=st.peek();
             if(n.info<temp.info){
                 if(n.info<temp.left.info){
-                    leftLeft(st);
+                    root=leftLeft(st);
                 }
                 else{
                     
@@ -50,7 +55,7 @@ class AVL{
             }
             else{
                 if(n.info>temp.right.info){
-                    rightRight(st);
+                    root=rightRight(st);
                 }
                 else{
 
@@ -60,20 +65,24 @@ class AVL{
         return root;
     }
 
-    void rightRight(Stack<AVL> st){
+    AVL rightRight(Stack<AVL> st){     //corrected
         AVL x=leftRotate(st.pop());
-        if(!st.isEmpty()){
+        while(!st.isEmpty()){
             AVL ance=st.pop();
             ance.right=x;
+            x=ance;
         }
+        return x;
     }
 
-    void leftLeft(Stack<AVL> st){
+    AVL leftLeft(Stack<AVL> st){       //corrected
         AVL x=rightRotate(st.pop());
-        if(!st.isEmpty()){
+        while(!st.isEmpty()){
             AVL ance=st.pop();
             ance.left=x;
+            x=ance;
         }
+        return x;
     }
 
     AVL rightRotate(AVL root){
@@ -141,6 +150,35 @@ class AVLtree {
             printPreorder(root.right);
         }
     }
+
+    static void printLevelOrderLineByLine(AVL root){ //this is without recursion
+        if(root==null){
+            return;
+        }
+        Queue<AVL> q=new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            AVL curr=q.peek();
+            q.remove();
+            if(curr==null){
+                if(!q.isEmpty()){
+                    q.add(null);
+                    System.out.println();
+                }
+            }
+            else{
+                if(curr.left!=null){
+                    q.add(curr.left);
+                }
+                if(curr.right!=null){
+                    q.add(curr.right);
+                }
+                System.out.print(curr.info+" ");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         AVL x=new AVL();
         x.root=x.insert(x.root,10);
@@ -148,7 +186,34 @@ class AVLtree {
         x.root=x.insert(x.root,30);
         x.root=x.insert(x.root,50);
         x.root=x.insert(x.root,60);
+        x.root=x.insert(x.root, 70);
+        x.root=x.insert(x.root, 80);
+        x.root=x.insert(x.root, 90);
+        x.root=x.insert(x.root, 100);
+        x.root=x.insert(x.root, 110);
+        x.root=x.insert(x.root, 120);
+        x.root=x.insert(x.root, 130);
+        x.root=x.insert(x.root, 140);
+        x.root=x.insert(x.root, 150);
+        x.root=x.insert(x.root, 160);
+        x.root=x.insert(x.root, 170);
+        x.root=x.insert(x.root, 180);
+        x.root=x.insert(x.root, 190);
+        x.root=x.insert(x.root, 200);
+        x.root=x.insert(x.root, 210);
         // printLevelOrderLineByLine(x.root);
-        printPreorder(x.root);
+        printLevelOrderLineByLine(x.root);
+        AVL y=new AVL();
+        y.root=y.insert(y.root, 100);
+        y.root=y.insert(y.root, 90);
+        y.root=y.insert(y.root, 80);
+        y.root=y.insert(y.root, 70);
+        y.root=y.insert(y.root, 60);
+        y.root=y.insert(y.root, 50);
+        y.root=y.insert(y.root, 40);
+        y.root=y.insert(y.root, 30);
+        y.root=y.insert(y.root, 20);
+        y.root=y.insert(y.root, 10);
+        printLevelOrderLineByLine(y.root);
     }
 }
