@@ -35,22 +35,19 @@ class AVL{
         }
         if(n.info>prev.info){
             prev.right=n;
-            // st.peek().right=n;
         }
         else{
             prev.left=n;
-            // st.peek().left=n;
         }
         st=refine(st);
         if(!st.isEmpty()){
-            System.out.println("YO");
             AVL temp=st.peek();
             if(n.info<temp.info){
                 if(n.info<temp.left.info){
                     root=leftLeft(st);
                 }
                 else{
-                    
+                    root=leftRight(st);
                 }
             }
             else{
@@ -58,28 +55,72 @@ class AVL{
                     root=rightRight(st);
                 }
                 else{
-
+                    root=rightLeft(st);
                 }
             }
         }
         return root;
     }
 
-    AVL rightRight(Stack<AVL> st){     //corrected
+    AVL rightRight(Stack<AVL> st){     
         AVL x=leftRotate(st.pop());
         while(!st.isEmpty()){
             AVL ance=st.pop();
-            ance.right=x;
+            if(x.info<ance.info){
+                ance.left=x;
+            }
+            else{
+              ance.right=x;  
+            }
             x=ance;
         }
         return x;
     }
 
-    AVL leftLeft(Stack<AVL> st){       //corrected
+    AVL leftLeft(Stack<AVL> st){       
         AVL x=rightRotate(st.pop());
         while(!st.isEmpty()){
             AVL ance=st.pop();
-            ance.left=x;
+            if(x.info<ance.info){
+                ance.left=x;
+            }
+            else{
+                ance.right=x;
+            }
+            x=ance;
+        }
+        return x;
+    }
+
+    AVL leftRight(Stack<AVL> st){      
+        AVL child=leftRotate(st.peek().left);
+        st.peek().left=child;
+        AVL x=rightRotate(st.pop());
+        while(!st.isEmpty()){
+            AVL ance=st.pop();
+            if(x.info<ance.info){
+                ance.left=x;
+            }
+            else{
+                ance.right=x;
+            }
+            x=ance;
+        }
+        return x;
+    }
+
+    AVL rightLeft(Stack<AVL> st){    
+        AVL child=rightRotate(st.peek().right);
+        st.peek().right=child;
+        AVL x=leftRotate(st.pop());
+        while(!st.isEmpty()){
+            AVL ance=st.pop();
+            if(x.info<ance.info){
+                ance.left=x;
+            }
+            else{
+                ance.right=x;
+            }
             x=ance;
         }
         return x;
@@ -140,6 +181,99 @@ class AVL{
         int l=height(root.left);
         int r=height(root.right);
         return (l>r)?l+1:r+1;
+    }
+
+    void delete(int info){  
+        Stack<AVL> st=new Stack<>();
+        if(root==null){
+            System.out.println("Underflow");
+            return;
+        }
+        else if(root.info==info){
+            if(root.left==null && root.right==null){  //no child
+                root=null;
+            }
+            else if(root.left!=null && root.right==null){  //one left child
+                root=root.left;
+            }
+            else if(root.left==null && root.right!=null){   //one right child
+                root=root.right;
+            }
+            else if(root.left!=null && root.right!=null){ //two childs
+                AVL pre=root.right,ptr=root.right;   //approach is to find smallest in right subtree
+                while(ptr.left!=null){
+                    pre=ptr;
+                    ptr=ptr.left;
+                }
+                if(ptr==pre){
+                    root.info=ptr.info;
+                    root.right=ptr.right;
+                }
+                else{
+                    root.info=ptr.info;
+                    pre.left=ptr.right;
+                }
+            }
+            //identify the case with balance factor
+        }
+        else{
+            AVL ptr=root;
+            AVL pre=root;
+            while(ptr!=null && ptr.info!=info){
+                pre=ptr;
+                if(ptr.info<info){
+                    ptr=ptr.right;
+                }
+                else{
+                    ptr=ptr.left;
+                }
+            }
+            if(ptr==null){
+                System.out.println("No such Element");
+                return;
+            }
+            if(ptr.right==null && ptr.left==null){  //leaf node
+            if(ptr==pre.right){
+                pre.right=null;
+              }  
+            else{
+                pre.left=null;
+              }     
+            }
+            else if(ptr.left!=null && ptr.right==null){ //one left child
+                if(ptr==pre.right){
+                    pre.right=ptr.left;
+                }
+                else{
+                    pre.left=ptr.left;
+                }
+            }
+            else if(ptr.left==null && ptr.right!=null){ //one right child
+                if(ptr==pre.right){
+                    pre.right=ptr.right;
+                }
+                else{
+                    pre.left=ptr.right;
+                }
+            }
+            else if(ptr.left!=null && ptr.right!=null){ //two childs  
+                pre=ptr;
+                ptr=pre.left;
+                AVL l=pre.left; //here is the approach to find largest in left subtree 
+                while(l.right!=null){
+                    ptr=l;
+                    l=l.right;
+                }
+                if(l==ptr){
+                    pre.info=l.info;
+                    pre.left=l.left;
+                }
+                else{
+                    pre.info=l.info;
+                    ptr.right=l.left;                    
+                }
+            }
+        }
     }
 }
 class AVLtree {
@@ -203,7 +337,18 @@ class AVLtree {
         x.root=x.insert(x.root, 210);
         // printLevelOrderLineByLine(x.root);
         printLevelOrderLineByLine(x.root);
+        System.out.println("\n");
         AVL y=new AVL();
+        y.root=y.insert(y.root, 200);
+        y.root=y.insert(y.root, 190);
+        y.root=y.insert(y.root, 180);
+        y.root=y.insert(y.root, 170);
+        y.root=y.insert(y.root, 160);
+        y.root=y.insert(y.root, 150);
+        y.root=y.insert(y.root, 140);
+        y.root=y.insert(y.root, 130);
+        y.root=y.insert(y.root, 120);
+        y.root=y.insert(y.root, 110);
         y.root=y.insert(y.root, 100);
         y.root=y.insert(y.root, 90);
         y.root=y.insert(y.root, 80);
@@ -215,5 +360,29 @@ class AVLtree {
         y.root=y.insert(y.root, 20);
         y.root=y.insert(y.root, 10);
         printLevelOrderLineByLine(y.root);
+        AVL z=new AVL();
+        z.root=z.insert(z.root, 12);
+        z.root=z.insert(z.root, 13);
+        z.root=z.insert(z.root, 10);
+        z.root=z.insert(z.root, 9);
+        z.root=z.insert(z.root, 14);
+        System.out.println("\n");
+        printLevelOrderLineByLine(z.root);
+        AVL test=new AVL();
+        test.root=test.insert(test.root, 60);
+        test.root=test.insert(test.root, 50);
+        test.root=test.insert(test.root, 55);
+        test.root=test.insert(test.root, 56);
+        test.root=test.insert(test.root, 20);
+        test.root=test.insert(test.root, 70);
+        test.root=test.insert(test.root, 80);
+        test.root=test.insert(test.root, 75);
+        test.root=test.insert(test.root, 4);
+        test.root=test.insert(test.root, 3);
+        test.root=test.insert(test.root, 10);
+        test.root=test.insert(test.root, 15);
+        test.root=test.insert(test.root, 2);
+        System.out.println("\n");
+        printLevelOrderLineByLine(test.root);
     }
 }
