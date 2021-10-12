@@ -33,11 +33,27 @@ class QPL{
         if(head==null){
             return;
         }
-        else if(head.next==null){
-            head=null;
-        }
         else{
             head=head.next;
+        }
+    }
+
+    void dequeue(int priority){
+        if(head==null){
+            return;
+        }
+        else if(head.priority==priority){
+            head=head.next;
+        }
+        else{
+            QPL pre=head,ptr=head;
+            while(ptr!=null && ptr.priority!=priority){
+                pre=ptr;
+                ptr=ptr.next;
+            }
+            if(ptr!=null){
+                pre.next=ptr.next;
+            }
         }
     }
 
@@ -46,8 +62,9 @@ class QPL{
             return;
         }
         QPL ptr;
+        System.out.print("Front=> ");
         for(ptr=head;ptr!=null;ptr=ptr.next){
-            System.out.print(ptr.data+" ");
+            System.out.print(ptr.data+"("+ptr.priority+")"+" ");
         }
         System.out.println();
     }
@@ -63,9 +80,10 @@ class QueuePriorityLink {
         q.enqueue(10, -1);
         q.enqueue(67, 6);
         q.print();
-        q.dequeue();
-        q.dequeue();
-        q.dequeue();
+        q.dequeue(4);
+        q.dequeue(-1);
+        q.dequeue(100);
         q.print();
+
     }   
 }

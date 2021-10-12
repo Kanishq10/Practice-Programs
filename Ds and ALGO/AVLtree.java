@@ -227,6 +227,7 @@ class AVL{
                 else{
                     ptr=ptr.left;
                 }
+                st.push(pre);
             }
             if(ptr==null){
                 System.out.println("No such Element");
@@ -243,34 +244,43 @@ class AVL{
             else if(ptr.left!=null && ptr.right==null){ //one left child
                 if(ptr==pre.right){
                     pre.right=ptr.left;
+                    st.peek().right=ptr.left;
                 }
                 else{
                     pre.left=ptr.left;
+                    st.peek().left=ptr.left;
                 }
             }
             else if(ptr.left==null && ptr.right!=null){ //one right child
                 if(ptr==pre.right){
                     pre.right=ptr.right;
+                    st.peek().right=ptr.right;
                 }
                 else{
                     pre.left=ptr.right;
+                    st.peek().left=ptr.right;
                 }
             }
             else if(ptr.left!=null && ptr.right!=null){ //two childs  
+                st.push(ptr);
                 pre=ptr;
                 ptr=pre.left;
                 AVL l=pre.left; //here is the approach to find largest in left subtree 
                 while(l.right!=null){
                     ptr=l;
                     l=l.right;
+                    st.push(ptr);
                 }
                 if(l==ptr){
                     pre.info=l.info;
                     pre.left=l.left;
+                    st.pop();
+                    st.push(pre);
                 }
                 else{
                     pre.info=l.info;
-                    ptr.right=l.left;                    
+                    ptr.right=l.left; 
+                    st.peek().right=l.left;                   
                 }
             }
         }
@@ -384,5 +394,18 @@ class AVLtree {
         test.root=test.insert(test.root, 2);
         System.out.println("\n");
         printLevelOrderLineByLine(test.root);
+        AVL de=new AVL();
+        de.root=de.insert(de.root,50);
+        de.root=de.insert(de.root,30);
+        de.root=de.insert(de.root,60);
+        de.root=de.insert(de.root,10);
+        de.root=de.insert(de.root,35);
+        de.root=de.insert(de.root,55);
+        de.root=de.insert(de.root,70);
+        System.out.println("\n");
+        printLevelOrderLineByLine(de.root);
+        de.delete(30);
+        System.out.println();
+        printLevelOrderLineByLine(de.root);
     }
 }

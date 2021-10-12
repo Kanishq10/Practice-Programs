@@ -78,7 +78,7 @@ class SortingMethods {
             }
             k++;
         }
-        while (i < n1) { // insert if reamaining
+        while (i < n1) { // insert if remaining
             arr[k] = L[i];
             i++;
             k++;

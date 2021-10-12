@@ -86,7 +86,7 @@ class BST{
                 root=root.right;
             }
             else if(root.left!=null && root.right!=null){ //two childs
-                BST pre=root.right,ptr=root.right;   //approach is to find smallest in right subtree
+                BST pre=root.right,ptr=root.right;   //approach is to find smallest in right subtree(inorder successor)
                 while(ptr.left!=null){
                     pre=ptr;
                     ptr=ptr.left;
@@ -144,7 +144,7 @@ class BST{
             else if(ptr.left!=null && ptr.right!=null){ //two childs  
                 pre=ptr;
                 ptr=pre.left;
-                BST l=pre.left; //here is the approach to find largest in left subtree 
+                BST l=pre.left; //here is the approach to find largest in left subtree (inorder predecessor)
                 while(l.right!=null){
                     ptr=l;
                     l=l.right;
@@ -539,6 +539,17 @@ class BST{
         }
         return root;
     }
+
+    // BST leftRotate(int data){
+    //     if(root==null){
+    //         return null;
+    //     }
+    //     if(root.info==data && root.right!=null){
+    //         BST r=root.right; 
+    //         root.right=r.left;
+                       
+    //     }
+    // }
 
     BST leftSkew(BST root){ //there is some error in output
         if(root==null){
