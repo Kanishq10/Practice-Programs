@@ -12,7 +12,7 @@ class QPA{
     }
   
 
-    void insert(int data,int priority){
+    void enqueue(int data,int priority){
         int i=0;
         while(true){
             if(pno[i]==priority || pno[i]==-1){
@@ -36,7 +36,7 @@ class QPA{
         arr[i][rear[i]]=data;
     }
 
-    // void delete(){
+    // void dequeue(){
     //     int i=0;
     //     // while(true){
     //     //     if(pno[i]==-1 || (front[i]!=-1 && front[i]!=-1)){
@@ -62,7 +62,7 @@ class QPA{
     //     }
     // }
 
-    void delete(int priority){
+    void dequeue(int priority){
         int i=0;
         while(true){
             if(pno[i]==-1 || pno[i]==priority){
@@ -118,27 +118,27 @@ class QPA{
 class QueuePriorityArray {
     public static void main(String[] args) {
         QPA x=new QPA();
-        x.insert(19, 2);
-        x.insert(232, 2);
-        x.insert(23, 2);
+        x.enqueue(19, 2);
+        x.enqueue(232, 2);
+        x.enqueue(23, 2);
         x.print(2);
-        x.insert(45, 6);
-        x.insert(23, 8);
-        x.insert(12, 8);
-        x.insert(13, 8);
-        x.insert(15, 8);
-        x.insert(17, 8);
-        x.insert(112, 8);
-        x.insert(32, 7);
+        x.enqueue(45, 6);
+        x.enqueue(23, 8);
+        x.enqueue(12, 8);
+        x.enqueue(13, 8);
+        x.enqueue(15, 8);
+        x.enqueue(17, 8);
+        x.enqueue(112, 8);
+        x.enqueue(32, 7);
         x.print(2);
         x.print(6);
         x.print(7);
         x.print(8);
-        x.delete(2);
-        x.delete(6);
-        x.delete(7);
-        x.delete(8);
-        x.delete(8);
+        x.dequeue(2);
+        x.dequeue(6);
+        x.dequeue(7);
+        x.dequeue(8);
+        x.dequeue(8);
         x.print(2);
         x.print(6);
         x.print(7);
