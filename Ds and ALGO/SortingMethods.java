@@ -92,27 +92,24 @@ class SortingMethods {
 
     static void radixSort(int[] arr) { // complexity O(d*n)
         // input range natural numbers only
-        int bucket[][] = new int[10][arr.length];
         int ln = 0;
         for (int i : arr) {
             int temp = (int) (Math.log10(i) + 1);
-            System.out.print(temp + " "); // only for checking no of digits
             if (temp > ln) {
                 ln = temp;
             }
         }
         for (int i = 0; i < ln; i++) {
-            System.out.println();
+            int bucket[][] = new int[10][arr.length];
             for (int j = 0; j < arr.length; j++) {
                 int d = ((int) (arr[j] / Math.pow(10, i))) % 10;
-                System.out.print(d + " "); // this is only for printing digit at given place
                 bucket[d][j] = arr[j];
             }
             int k = 0;
             for (int l = 0; l < 10; l++) {
                 for (int m = 0; m < bucket[l].length; m++) {
                     if (bucket[l][m] != 0) {
-                        arr[k] = bucket[l][m];// error index out of bonds
+                        arr[k] = bucket[l][m];
                         k++;
                     }
                 }
@@ -135,7 +132,7 @@ class SortingMethods {
         int arr1[] = { 3, 5, 1, 2, 9, 6, 5, 4, -1, -2 };
         insertionSort(arr1);
         print(arr1);
-        int arr2[] = { 1, 7, 8, 5, 4, 3, 7, 2, 00005 }; // find problem for 2 digit
+        int arr2[] = { 1, 7, 8,10, 4, 3, 7, 2, 00005,65,22,0625,887,11,0034,23,22,107,15}; 
         radixSort(arr2);
         print(arr2);
     }
