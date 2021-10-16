@@ -2,15 +2,13 @@
 class SortingMethods {
     static int[] selectionSort(int[] arr) { // selecting an element and compare to other elements
         for (int i = 0; i < arr.length - 1; i++) {
-            int min = i;
-            for (int j = i; j < arr.length; j++) {
-                if (arr[j] < arr[min]) {
-                    min = j;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
-            int temp = arr[i];
-            arr[i] = arr[min];
-            arr[min] = temp;
         }
         return arr;
     }
@@ -32,7 +30,7 @@ class SortingMethods {
                                           // best case
     {
         for (int i = 1; i < arr.length; i++) { // shifting larger elements to next position and inserting key element to
-                                               // pcorrect location
+                                               // correct location
             int key = arr[i];
             int j = i - 1;
             while (j >= 0 && arr[j] > key) {
