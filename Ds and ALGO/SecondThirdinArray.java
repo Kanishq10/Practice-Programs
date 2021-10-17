@@ -1,5 +1,6 @@
 class SecondThirdinArray {
     //this method is useful for finding second and third max min in array
+    
     public static void main(String[] args) {
         int arr[]={1,3,7,3,9,2,78,45,92,67,77,83};
         int max=arr[0],min=arr[0];
