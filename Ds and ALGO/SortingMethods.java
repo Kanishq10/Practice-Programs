@@ -115,6 +115,30 @@ class SortingMethods {
         }
     }
 
+    static void quickSort(int arr[],int start,int end){
+        if(start<end){
+            int pi=partition(arr, start, end);
+            quickSort(arr, start, pi-1);
+            quickSort(arr, pi+1, end);
+        }
+    }
+
+    static int partition(int[] arr,int start,int end){
+        int pivot=arr[start];
+        int j=start+1;
+        for(int i=start+1;i<=end;i++){
+            if(arr[i]<pivot){
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+                j++;
+            }
+        }
+        arr[start]=arr[j-1];
+        arr[j-1]=pivot;
+        return j-1;
+    }
+
     static void print(int[] arr) {
         System.out.println();
         for (int i : arr) {
@@ -133,5 +157,8 @@ class SortingMethods {
         int arr2[] = { 1, 7, 8,10, 4, 3, 7, 2, 00005,65,22,0625,887,11,0034,23,22,107,15}; 
         radixSort(arr2);
         print(arr2);
+        int arr3[]={6,7,8,4,1,2};
+        quickSort(arr3,0,arr3.length-1);
+        print(arr3);
     }
 }
