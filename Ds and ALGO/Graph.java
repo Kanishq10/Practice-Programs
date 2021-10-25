@@ -26,13 +26,14 @@ class GR{
         ptr.next=new GR(index,distance);
     }
 
-    void print(GR root){
+    void print(){
         if(root==null){
             return;
         }
         GR ptr=root;
-        while(root.next!=null){
+        while(ptr.next!=null){
             System.out.print("<<"+ptr.index+" "+ptr.distance+">> ");
+            ptr=ptr.next;
         }
         System.out.println();
     }
@@ -41,33 +42,73 @@ class Graph {
     public static void main(String[] args) {
       Scanner in=new Scanner(System.in);
       String arr[]={"Chandigarh","Mumbai","Delhi","Kolkata","Chennai"};
-      GR al[]=new GR[5];
-      System.out.println("Enter 1 for Directed Graph, 2 for Directed Graph");
+      GR al[]=new GR[5];//bugs
+      for (int i = 0; i < al.length; i++) {
+          al[i]=new GR();
+      }
+      System.out.println("Enter 1 for Directed Graph, 2 for undirected Graph");
       switch (in.nextInt()) {
       case 1:
           char ans = 'y';
           while (ans == 'y' || ans == 'Y') {
               System.out.println("Enter first city ,second city and distance between them");
-              //equal ignore case compare strings
+              String s1 = in.next();
+              String s2 = in.next();
+              int distance = in.nextInt();
+              int i = -1, j = -1;
+              for (int x = 0; x < arr.length; x++) {
+                  if (arr[x].equalsIgnoreCase(s1)) {
+                      i = x;
+                  }
+              }
+              for (int x = 0; x < arr.length; x++) {
+                  if (arr[x].equalsIgnoreCase(s2)) {
+                      j = x;
+                  }
+              }
+              if (i != -1 && j != -1) {
+                  al[i].insert(j, distance);
+              }
               System.out.println("Want to enter more y/n ");
+              ans = in.next().charAt(0);
           }
           break;
 
       case 2:
           ans = 'y';
           while (ans == 'y' || ans == 'Y') {
-              System.out.println("Enter first city index ,second city index and distance between them");
-              int i = in.nextInt();
-              int j = in.nextInt();
+              System.out.println("Enter first city,second city and distance between them");
+              String s1 = in.next();
+              String s2 = in.next();
               int distance = in.nextInt();
-              al[i].insert(j, distance);
-              al[j].insert(i, distance);
+              int i = -1, j = -1;
+              for (int x = 0; x < arr.length; x++) {
+                  if (arr[x].equalsIgnoreCase(s1)) {
+                      i = x;
+                  }
+              }
+              for (int x = 0; x < arr.length; x++) {
+                  if (arr[x].equalsIgnoreCase(s2)) {
+                      j = x;
+                  }
+              }
+              if (i != -1 && j != -1) {
+                  al[i].insert(j, distance);
+                  al[j].insert(i, distance);
+              }
               System.out.println("Want to enter more y/n ");
+              ans = in.next().charAt(0);
           }
           break;
       default:
           System.out.println("Wrong Choice");
           break;
       }
+      al[0].print();
+      al[1].print();
+      al[2].print();
+      al[3].print();
+      al[4].print();
+      in.close();
     }
 }
