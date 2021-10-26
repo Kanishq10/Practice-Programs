@@ -19,6 +19,7 @@ class GR{
         GR ptr=root;
         while (ptr.next != null) {
             if (ptr.index == index && ptr.distance == distance) {
+                System.out.println("here");
                 return;
             }
             ptr = ptr.next;
@@ -38,7 +39,7 @@ class GR{
         System.out.println();
     }
 }
-class Graph {
+class GraphArrayList {
     public static void main(String[] args) {
       Scanner in=new Scanner(System.in);
       String arr[]={"Chandigarh","Mumbai","Delhi","Kolkata","Chennai"};
@@ -68,6 +69,7 @@ class Graph {
               }
               if (i != -1 && j != -1) {
                   al[i].insert(j, distance);
+                  System.out.println("Execute");
               }
               System.out.println("Want to enter more y/n ");
               ans = in.next().charAt(0);
@@ -95,6 +97,7 @@ class Graph {
               if (i != -1 && j != -1) {
                   al[i].insert(j, distance);
                   al[j].insert(i, distance);
+                  System.out.println("execute");
               }
               System.out.println("Want to enter more y/n ");
               ans = in.next().charAt(0);
