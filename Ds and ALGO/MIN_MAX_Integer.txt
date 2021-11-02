@@ -1,4 +1,4 @@
-//minimum and maximum intger in java
+//minimum and maximum integer in java
 we can get it by:
 Integer.MIN_VALUE;
 Integer.MAX_VALUE;

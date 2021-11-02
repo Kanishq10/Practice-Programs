@@ -16,5 +16,9 @@
   public static void main(String[] args) {
     new3 f=new new3();
     System.out.println(f.x);
+    int a=19,b=19;
+    System.out.println(System.identityHashCode(a)+" "+System.identityHashCode(b));
+    a=300;b=300;
+    System.out.println(System.identityHashCode(a)+" "+System.identityHashCode(b));
   }
 }

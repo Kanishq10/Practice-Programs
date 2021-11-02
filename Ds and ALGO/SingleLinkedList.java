@@ -237,7 +237,7 @@ class LinkList{
         }
     }
     
-        void swap(int x,int y){
+        void swap(int x,int y){    ///new approach take pre and post pointer of linked list
         ptr=start;
         LinkList preptr=null;
         while(ptr!=null && ptr.info!=x){

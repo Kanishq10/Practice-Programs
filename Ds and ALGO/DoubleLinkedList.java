@@ -188,7 +188,7 @@ class Node{
         }
         return temp.info;
     }
-
+    //add a swap function
     void print(){
         if(start==null){
             System.out.println("No element in list");
