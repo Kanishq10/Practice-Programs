@@ -2,6 +2,7 @@ from playsound import playsound
 from gtts import gTTS
 def playaudio(audio):
     playsound(audio)
+    
 def audio_bana(text):
     audio=gTTS(text)
     audio.save("textaudio.mp3")
