@@ -1,3 +1,4 @@
+import java.util.Queue;
 import java.util.Scanner;
 
 class GRA{
@@ -35,6 +36,15 @@ class GRA{
         }
     }
 
+    void BFS(){
+        int status[]=new int[arr.length];
+        Queue q=new LinkList();
+        for (int i = 0; i < mat.length; i++) {
+            for(int j=0;j<mat[i].length;j++){
+                
+            }
+        }
+    }
     void print(){
         System.out.print(" ");
         for (int i = 0; i < mat.length; i++) {
