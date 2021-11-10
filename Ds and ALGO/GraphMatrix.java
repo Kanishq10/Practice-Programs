@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -36,15 +37,39 @@ class GRA{
         }
     }
 
-    void BFS(){
-        int status[]=new int[arr.length];
-        Queue q=new LinkList();
-        for (int i = 0; i < mat.length; i++) {
-            for(int j=0;j<mat[i].length;j++){
+    // void BFS(){
+    //     // int status[]=new int[arr.length];
+    //     Queue<Integer> q=new LinkedList();
+    //     for (int i = 0; i < mat.length; i++) {
+    //         for(int j=0;j<mat[i].length;j++){
                 
+    //         }
+    //     }
+    // }
+    Boolean isCyclic(){
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                if(i==j){
+                    if(mat[i][j]!=0){
+                        return true;
+                    }
+                }
             }
         }
+        int count=0;
+        for(int i=0;i<mat.length-1;i++){
+            for(int j=i+1;j<mat[i].length;j++){
+                if(mat[i][j]!=0){
+                    count++;
+                }
+            }
+        }
+        if(count>=arr.length){
+            return true;
+        }
+        return false;
     }
+
     void print(){
         System.out.print(" ");
         for (int i = 0; i < mat.length; i++) {
@@ -61,7 +86,7 @@ class GRA{
 class GraphMatrix {
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
-        GRA x=new GRA();
+        GRA x=new GRA(3);
         System.out.println("Want to insert");
         char ans=in.next().charAt(0);
         while(ans=='Y' || ans=='y'){
@@ -70,6 +95,8 @@ class GraphMatrix {
             ans=in.next().charAt(0);
         }
         x.print();
+        System.out.println();
+        System.out.println(x.isCyclic());
         in.close();
     }
 }
