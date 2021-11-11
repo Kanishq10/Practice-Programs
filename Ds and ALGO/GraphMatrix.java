@@ -70,6 +70,84 @@ class GRA{
         return false;
     }
 
+    Boolean isCyclic(int[][] array){
+        int count=0;
+        for(int i=0;i<array.length-1;i++){
+            for(int j=i+1;j<array[i].length;j++){
+                if(array[i][j]!=0){
+                    count++;
+                }
+            }
+        }
+        int v=0;
+        for(int i=0;i<mat.length;i++){   //find number of vertices with 0 degree
+            Boolean flag=true;
+            for(int j=0;j<mat[i].length;j++){
+                if(mat[i][j]!=0){
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag){
+                v++;
+            }
+        }
+
+        if(count>=arr.length-v){
+            return true;
+        }
+        return false;   
+    }
+    
+    int edges(){
+        int count=0;
+        for(int i=0;i<mat.length-1;i++){
+            for(int j=i+1;j<mat[i].length;j++){
+                if(mat[i][j]!=0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    int[][] bubbleSort(int arr[][]) { // sorting on the basis of edges in Sde
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j][3] > arr[j + 1][3]) {
+                    int t1 = arr[j][0], t2 = arr[j][1], t3 = arr[j][2];
+                    arr[j][0] = arr[j + 1][0];
+                    arr[j][1] = arr[j + 1][1];
+                    arr[j][2] = arr[j + 1][2];
+                    arr[j + 1][0] = t1;
+                    arr[j + 1][1] = t2;
+                    arr[j + 1][2] = t3;
+                }
+            }
+        }
+        return arr;
+    }
+
+    void kruskalAlgo(){     //for finding minimum spanning tree
+        int length=edges();
+        int SDE[][]=new int[length][3];
+        for(int i=0;i<mat.length;i++){   //entering vertices and weights in SDE
+            for(int j=0;j<mat[i].length;j++){
+                if(i!=j && mat[i][j]!=0){
+                    SDE[i][0]=i;
+                    SDE[i][1]=j;
+                    SDE[i][2]=mat[i][j];
+                }
+            }
+        }
+        bubbleSort(SDE);
+        int res[][]=new int[mat.length][mat.length];
+        //inserting in resultant matrix
+        for(int i=0;i<SDE.length;i++){
+            res[SDE[i][0]][SDE[i][1]]=SDE[i][3];
+
+        }
+    }
     void print(){
         System.out.print(" ");
         for (int i = 0; i < mat.length; i++) {
@@ -86,7 +164,7 @@ class GRA{
 class GraphMatrix {
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
-        GRA x=new GRA(3);
+        GRA x=new GRA();
         System.out.println("Want to insert");
         char ans=in.next().charAt(0);
         while(ans=='Y' || ans=='y'){
