@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 class DIJ{
     Scanner in=new Scanner(System.in);
@@ -34,13 +36,20 @@ class DIJ{
         }
     }
 
-    void dijisktra(int n,int s){
+    void dijikstra(int n,int source){
         int a[]=new int[n];
+        int status[]=new int[n];
         for(int i=0;i<n;i++){
             a[i]=Integer.MAX_VALUE;
         }
-        a[s]=0;
-        
+        a[source]=0;
+        Queue<Integer> q=new LinkedList<>();
+        q.add(arr[source]);
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                
+            }
+        }
     }
     void print(){
         System.out.print(" ");
@@ -68,7 +77,7 @@ class DijsktraALGO {
             ans=in.next().charAt(0);
         }
         x.print();
-        x.dijskstra(x.arr.length,in.nextInt());
+        x.dijikstra(x.arr.length,in.nextInt());
         in.close();
     }
 }

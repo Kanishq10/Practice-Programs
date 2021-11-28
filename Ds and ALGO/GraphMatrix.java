@@ -132,7 +132,7 @@ class GRA{
 
     int[][] kruskalAlgo(){     //for finding minimum spanning tree
         int length=edges();
-        int SDE[][]=new int[length][3];
+        int SDE[][]=new int[length][3];    //SDE matrix for storing vertices and weights
         int k=0;
         for(int i=0;i<mat.length-1;i++){   //entering vertices and weights in SDE
             for(int j=i+1;j<mat[i].length;j++){
@@ -145,7 +145,7 @@ class GRA{
             }
         }
         // print(SDE);
-        SDE=bubbleSort(SDE);
+        SDE=bubbleSort(SDE);     //sorting on the basis of weights 
         System.out.println();
         int res[][]=new int[mat.length][mat.length];
         //inserting in resultant matrix
@@ -159,6 +159,31 @@ class GRA{
         }
         return res;
     }
+
+    int[] primsAlgo(){
+        int status[]=new int[arr.length];
+        int weight[]=new int[arr.length];
+        int neighbour[]=new int[arr.length];
+        for (int i = 0; i < weight.length; i++) {
+            weight[i]=Integer.MAX_VALUE;
+        }
+        Queue<Integer> q=new LinkedList<>();
+        int x=0;
+        q.add(x);
+        while(!q.isEmpty()){
+            for(int j=0;j<mat[x].length;j++){
+                if(mat[x][j]!=0){
+                    if(status[j]==0){
+                        q.add(j);
+                        if(weight[j]>mat[x][j]){
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     void print(){
         System.out.print(" ");
         for (int i = 0; i < mat.length; i++) {
@@ -171,6 +196,7 @@ class GRA{
             }
         }
     }
+
     void print(int array[][]){
         System.out.print(" ");
         for (int i = 0; i < array.length; i++) {
