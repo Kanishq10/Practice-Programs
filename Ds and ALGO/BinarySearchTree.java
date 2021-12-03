@@ -659,6 +659,16 @@ class BinarySearchTree {
         }
     }
 
+    static BST sortedArrayToBinary(int arr[],int start,int end){
+        if(start>end)
+            return null;
+        int mid=(start+end)/2;
+        BST x=new BST(arr[mid]);
+        x.left=sortedArrayToBinary(arr, start, mid-1);
+        x.right=sortedArrayToBinary(arr, mid+1, end);
+        return x;
+    }
+
     public static void main(String[] args) {
         BST t=new BST();
         t.insert(5);
@@ -855,5 +865,9 @@ class BinarySearchTree {
         f.printLevelOrderLevelWise(f.root);
         BST fn=f.rightRotate(8);
         printInorder(fn);
+        System.out.println("\n");
+        int arr[]={1,2,3,4,5,6,7,8,9};
+        BST atb=sortedArrayToBinary(arr, 0, 8);
+        printLevelOrderLineByLine(atb);
     }    
 }
