@@ -1,8 +1,8 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.*;
 public class traversalls {
     public static void LinkedListTraversalback(LinkedList<Integer> ll){
-        ListIterator is=ll.listIterator();
+        ListIterator<Integer> is=ll.listIterator();
         while(is.hasPrevious()){
             System.out.print(is.previous()+" ");
         }
@@ -34,7 +34,7 @@ public class traversalls {
     public static void LinkedListTraversal(LinkedList<Integer>ll)
 {
     //Your code here
-    Iterator it = ll.iterator();
+    Iterator<Integer> it = ll.iterator();
     while(it.hasNext()){
         System.out.print(it.next()+" ");
     }

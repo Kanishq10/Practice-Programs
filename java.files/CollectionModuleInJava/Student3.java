@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.*;
 public class Student3 {
     public static void main(String[] args) {

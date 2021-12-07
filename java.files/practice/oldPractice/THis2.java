@@ -19,6 +19,7 @@ class B{
 class THis2 {
     public static void main(String[] args) {
         A4 ha = new A4();
+        System.out.println(ha.data);
     }
 }
 

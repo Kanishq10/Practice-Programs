@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.LinkedList;
 import java.util.Queue;
 class LinkedListss {

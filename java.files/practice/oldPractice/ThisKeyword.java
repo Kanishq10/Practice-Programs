@@ -44,5 +44,7 @@ class ThisKeyword {
         s4.print();
         s5.print();
         s1.p();
+        s2.print();
+        s3.print();
     }
 }

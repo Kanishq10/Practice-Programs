@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 
 public class maxpair {
     public static void main(String[] args) {

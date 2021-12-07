@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.*;
 class Student2{
   int rollno;

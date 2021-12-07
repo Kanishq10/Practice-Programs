@@ -6,8 +6,8 @@ class test12{
             throw new derived();
         }catch(derived t){
            System.out.println("derived");
-        }catch(Testes s){
-            System.out.println(s);
-        }
+        }   //catch(Testes s){            //unreachable 
+        //     System.out.println(s);
+        // }
     }
 }

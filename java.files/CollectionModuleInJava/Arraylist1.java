@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 
 import java.util.*;
 import java.util.function.Predicate;

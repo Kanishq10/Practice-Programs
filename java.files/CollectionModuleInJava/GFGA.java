@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.*;
 class GFGA {
     public static ArrayList<Integer> getSmaller(ArrayList<Integer> a,int x){

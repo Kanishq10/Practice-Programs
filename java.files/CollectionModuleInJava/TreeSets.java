@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 
 import java.util.Iterator;
 import java.util.TreeSet;

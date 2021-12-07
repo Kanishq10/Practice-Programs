@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 
 public class wrapper {
     public static void main(String[] args) {

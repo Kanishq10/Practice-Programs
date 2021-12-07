@@ -1,4 +1,4 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.Scanner;
 import java.util.*;
 class ArrayList_Collection

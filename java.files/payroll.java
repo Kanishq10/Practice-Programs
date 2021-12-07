@@ -5,8 +5,8 @@ class payroll {
         String name=s.next();
         int hour=s.nextInt();
         float rate=s.nextFloat();
-        double tax=0.2, taxs=00.9;
+        // double tax=0.2, taxs=00.9;
         System.out.println(name+" "+hour+" "+rate+" "+7*hour*rate*0.2+" "+7*hour*rate*00.9);
-
+        s.close();
     }
 }

@@ -1,7 +1,7 @@
-package collections;
+package CollectionModuleInJava;
 import java.util.*;
 class GFGC {
-    public static void iterFTB(Iterator i)
+    public static void iterFTB(Iterator<Integer> i)
 {
    while (i.hasNext()) { 
             System.out.print(i.next() + " "); 
@@ -23,7 +23,7 @@ class GFGC {
                 arr.add(x);
             }
             
-            Iterator i=arr.iterator();//creating an iterator of ArrayList arr
+            Iterator<Integer> i=arr.iterator();//creating an iterator of ArrayList arr
             
             //calling the iterFTB method and passing the iteraror
             iterFTB(i);
