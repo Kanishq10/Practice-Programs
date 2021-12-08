@@ -1,7 +1,13 @@
  class math {
     static  int pi=3;
+    static int count=0;
     final int x;//it can be intialised only in constructor or by value and once it is initialised it cannot modified
+    math(){
+        count++;
+        this.x=0;
+    }
     math(int x){
+        count++;
         this.x=x;
     }
     static final int data;//it can only initialised in static block or itself
@@ -23,6 +29,6 @@ class math2{
         obj.run();
         System.out.println(math.pi);
         System.out.println(math.data);
-        
+        System.out.println(math.count);
     }
 } 
