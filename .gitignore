@@ -1,6 +1,9 @@
 #vscode
 .vscode/
 
+#bootstrap
+bootstrap/
+
 # Local History for Visual Studio Code
 .history/
 
