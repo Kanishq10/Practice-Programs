@@ -1,6 +1,9 @@
 #vscode
 .vscode/
 
+#mp4 files
+*.mp4
+
 #bootstrap
 bootstrap/
 
