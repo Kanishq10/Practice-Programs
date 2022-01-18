@@ -46,6 +46,7 @@ bootstrap/
 hs_err_pid*
 
 #python
+__pycache__/
 .ipynb_checkpoints
 *.pyc
 Python docs/*.mp3
