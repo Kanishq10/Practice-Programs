@@ -50,6 +50,7 @@ hs_err_pid*
 *.pyc
 Python docs/*.mp3
 New python Docs/*.jpg
+New python Docs/*.img
 
 #node
 
