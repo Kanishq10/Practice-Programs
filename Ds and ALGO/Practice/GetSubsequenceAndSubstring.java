@@ -20,7 +20,7 @@ class GetSubsequenceAndSubstring {
         return myli;
     }
 
-    static ArrayList<String> gssubstring(String str){
+    static ArrayList<String> gssubstring(String str){       //optimise this 
         if(str.length()==0){
             return new ArrayList<String>();
         }
