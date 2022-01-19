@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 class GRA{
@@ -160,29 +158,29 @@ class GRA{
         return res;
     }
 
-    int[] primsAlgo(){
-        int status[]=new int[arr.length];
-        int weight[]=new int[arr.length];
-        int neighbour[]=new int[arr.length];
-        for (int i = 0; i < weight.length; i++) {
-            weight[i]=Integer.MAX_VALUE;
-        }
-        Queue<Integer> q=new LinkedList<>();
-        int x=0;
-        q.add(x);
-        while(!q.isEmpty()){
-            for(int j=0;j<mat[x].length;j++){
-                if(mat[x][j]!=0){
-                    if(status[j]==0){
-                        q.add(j);
-                        if(weight[j]>mat[x][j]){
+    // int[] primsAlgo(){
+    //     int status[]=new int[arr.length];
+    //     int weight[]=new int[arr.length];
+    //     int neighbour[]=new int[arr.length];
+    //     for (int i = 0; i < weight.length; i++) {
+    //         weight[i]=Integer.MAX_VALUE;
+    //     }
+    //     Queue<Integer> q=new LinkedList<>();
+    //     int x=0;
+    //     q.add(x);
+    //     while(!q.isEmpty()){
+    //         for(int j=0;j<mat[x].length;j++){
+    //             if(mat[x][j]!=0){
+    //                 if(status[j]==0){
+    //                     q.add(j);
+    //                     if(weight[j]>mat[x][j]){
                             
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     void print(){
         System.out.print(" ");

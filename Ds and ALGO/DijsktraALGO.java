@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 class DIJ{
     Scanner in=new Scanner(System.in);
@@ -36,7 +34,7 @@ class DIJ{
         }
     }
 
-    void dijikstra(int n,int source){
+/*     void dijikstra(int n,int source){
         int a[]=new int[n];
         int status[]=new int[n];
         for(int i=0;i<n;i++){
@@ -50,7 +48,7 @@ class DIJ{
                 
             }
         }
-    }
+    } */
     void print(){
         System.out.print(" ");
         for (int i = 0; i < mat.length; i++) {
@@ -77,7 +75,7 @@ class DijsktraALGO {
             ans=in.next().charAt(0);
         }
         x.print();
-        x.dijikstra(x.arr.length,in.nextInt());
+        // x.dijikstra(x.arr.length,in.nextInt());
         in.close();
     }
 }
