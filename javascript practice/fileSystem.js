@@ -23,18 +23,22 @@ if(fs.existsSync("Folder")==false){
 
 fs.writeFileSync("Folder/yep.txt","yep ,what are you doing here")
 console.log(""+fs.readFileSync("Folder/yep.txt"))
-// fs.unlinkSync("Folder/yep.txt")
 
-// let name=fs.readdirSync("Folder")
-// for(let i=0;i<name.length;i++){
-//     console.log(`deleting the file: ${name[i]}`)
-//     fs.unlinkSync("Folder/"+name[i])
-// }
+let name=fs.readdirSync("Folder")
+for(let i=0;i<name.length;i++){
+    console.log(`deleting the file: ${name[i]}`)
+    fs.unlinkSync("Folder/"+name[i])
+}
 
 
-//lstat "__dirname" _dirname variable gives the current directory path
-let checkObj=fs.lstatSync(__dirname+"/Folder/yep.txt")
+console.log(__dirname)    //__dirname variable gives current directory path
+console.log(__filename)   //__filename variable gives current file path
+//lstat  
+let checkObj=fs.lstatSync(__dirname)
 let checkFile=checkObj.isFile();
 console.log(checkFile);
 let checkDir=checkObj.isDirectory();
 console.log(checkDir)
+
+console.log("reoving the folder");
+fs.rmdirSync("Folder")
