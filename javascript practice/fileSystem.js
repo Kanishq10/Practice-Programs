@@ -25,7 +25,16 @@ fs.writeFileSync("Folder/yep.txt","yep ,what are you doing here")
 console.log(""+fs.readFileSync("Folder/yep.txt"))
 // fs.unlinkSync("Folder/yep.txt")
 
-let name=fs.readdirSync("Folder")
-for(let i=0;i<name.length;i++){
-    console.log(`Name of the file: ${name[i]}`)
-}
+// let name=fs.readdirSync("Folder")
+// for(let i=0;i<name.length;i++){
+//     console.log(`deleting the file: ${name[i]}`)
+//     fs.unlinkSync("Folder/"+name[i])
+// }
+
+
+//lstat "__dirname" _dirname variable gives the current directory path
+let checkObj=fs.lstatSync(__dirname+"/Folder/yep.txt")
+let checkFile=checkObj.isFile();
+console.log(checkFile);
+let checkDir=checkObj.isDirectory();
+console.log(checkDir)
