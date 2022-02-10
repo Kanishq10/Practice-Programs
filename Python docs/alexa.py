@@ -1,4 +1,4 @@
-from playsound import playsound
+from playsound import playsound   #install older version 
 from gtts import gTTS
 def playaudio(audio):
     playsound(audio)
