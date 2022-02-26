@@ -117,7 +117,7 @@ class SortingMethods {
 
     static void quickSort(int arr[],int start,int end){
         if(start<end){
-            int pi=partition(arr, start, end);
+            int pi=partitionRandomised(arr, start, end);
             quickSort(arr, start, pi-1);
             quickSort(arr, pi+1, end);
         }
@@ -137,6 +137,25 @@ class SortingMethods {
         arr[start]=arr[j-1];
         arr[j-1]=pivot;
         return j-1;
+    }
+
+    static int partitionRandomised(int[] arr,int start,int end){
+        int p=(int)((Math.random()*end)+start);
+        int pivot=arr[p];
+        int j=start;
+        for(int i=start;i<=end;i++){
+            if(i==p) continue;
+            if(j==p) j++;
+            if(arr[i]<pivot){
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+                j++;
+            }
+        }
+        arr[p]=arr[j-1];
+        arr[j-1]=pivot;
+        return p;
     }
 
     static void print(int[] arr) {
