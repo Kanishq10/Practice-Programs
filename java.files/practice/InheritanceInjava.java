@@ -1,5 +1,4 @@
 package practice;
-import java.util.*;
 
  class Person{
     int data;
