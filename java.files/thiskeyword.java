@@ -1,3 +1,5 @@
+//THIS keyword always points to the current object of class ,
+//so it cannot be used in static methods as static method cannot call non static members without theire class
 public class thiskeyword {
     String name;
     int age;
