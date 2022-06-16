@@ -31,7 +31,7 @@ else{
     console.log("prime");
 }
 
-//function
+//functions
 function fx(para){
     console.log(para);
     let val=Math.random()>0.5?true:para;

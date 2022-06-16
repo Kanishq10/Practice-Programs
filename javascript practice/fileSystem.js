@@ -40,5 +40,5 @@ console.log(checkFile);
 let checkDir=checkObj.isDirectory();
 console.log(checkDir)
 
-console.log("reoving the folder");
+console.log("removing the folder");
 fs.rmdirSync("Folder")

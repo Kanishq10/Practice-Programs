@@ -7,6 +7,9 @@ while(i<arr.length){
     i++;
 }
 
+for(x in arr ){
+    console.log(x,'hehe');
+}
 arr.push("hello");
 arr.unshift("howdy");
 console.log(arr.join(" "));
