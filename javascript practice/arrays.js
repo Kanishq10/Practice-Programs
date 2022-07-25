@@ -13,8 +13,20 @@ for(x in arr ){
 arr.push("hello");
 arr.unshift("howdy");
 console.log(arr.join(" "));
-
-
+console.log('-------------------------------------------');
+let arr2=arr.filter(x=>x<=3);     //array filter method ,output selected elements based on condition
+console.log(arr2,'by filter');
+console.log(...(arr.map(x=>x<=3)),'by map');
+console.log(...(arr.map(x=>x*3)),'by map');   //return each element by modifying them
+arr.forEach(myfunc);
+function myfunc(item,index,arr){
+    console.log(item,index,arr[index]);
+}
+let oddarr=arr.filter(function(x){
+    return x%2!==0;
+  });
+console.log(oddarr);
+console.log('-----------------------------------------');
 arr.pop();
 arr.shift();
 console.log(...arr);    //... operator feed every element of array to console

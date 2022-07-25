@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+            function addDivWithSpans() {
+                var a=document.getElementById("d1");
+                var b=document.createElement("span");
+                b.innerHTML="HeHe,see the magic";
+                b.setAttribute("id","hdipa");
+                // a.appendChild(b);
+                var ele=a.children[0];
+                a.replaceChild(b,ele);
+                a.removeChild(a.lastChild);
+                // document.write("hehe how are you");   //avoid this
+            }
+            function rmvchild(){
+                var a=document.getElementsByClassName("x1");
+                let child=a.children;
+                
+            }
+    </script>
+  </head>
+  <body>
+    <div id="d1" class="x1">
+        <p>I will disappear</p>
+        <p>I will remain</p>
+        <p>remove me</p>
+    </div>
+    <button onclick="addDivWithSpans()">see magic</button>
+  </body>
+</html>

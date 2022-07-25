@@ -1,0 +1,25 @@
+[
+    {
+    "name":"kanishq",
+    "last name":"Singh",
+    "iscoder":"true",
+    "friends":["you","me"],
+    "place":{
+        "delhi":"where",
+        "Noida":"hehe"
+    }
+},
+    {
+    "name":"Ram",
+    "last name":"Charan",
+    "iscoder":"false",
+    "friends":["me","me"],
+    "place":{
+        "delhi":"no id dont",
+        "Noida":"yep",
+        "Usa":"Nice"
+    }
+}
+]
+
+

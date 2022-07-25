@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateFORM(){
+            let x=document.getElementById("unmae").value;
+            let y=document.getElementById("uage").value;
+            let z=document.getElementById("mail").value;
+            let index=z.indexOf("@");
+            if(x=="" || x.length<4){
+                alert("Please enter your name");
+                return false;
+            }
+            else if(isNaN(y) || (y<18 || y>50)){
+                alert("please enter age");
+                return false;
+            }          
+            else if(index==undefined){
+                alert("please enter email");
+                return false;
+            }  
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateFORM()">
+        <div>
+            <label for="uname"><h3 >Name</h3></label>
+            <input type="text" id="uname" name="uname">
+        </div>
+        <div>
+            <label for="uage"><h3>Age</h3> </label>
+            <input type="text" id="uage" name="uage">
+        </div>
+        <div>
+            <label for="mail"><h3>Email </h3></label>
+            <input type="text" id="mail" name="mail">
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</body>
+</html>

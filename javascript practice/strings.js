@@ -1,6 +1,7 @@
 let sqs='hello how are you';
 let dqs="   hey i know you   ";
 
+console.log(dqs.indexOf("i"),"shows index of given character");
 console.log(sqs.charAt(3));
 console.log(dqs.charCodeAt(1));
 console.log(sqs.substring(2,6));

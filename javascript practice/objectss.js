@@ -35,7 +35,7 @@ console.log(naruto);
 
 //delete
 delete naruto.name;
-console.log(naruto)
+console.log(naruto);
 
 //accessing with for loop
 for(xkey in naruto){
