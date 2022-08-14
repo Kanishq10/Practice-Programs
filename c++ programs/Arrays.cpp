@@ -13,5 +13,11 @@ int main(){
     }
     cout<<endl;
     cout<<arr[2]<<endl<<sizeof(arr)/sizeof(arr[0]);
+    cout<<a;
+    cout<<*a;
+    cout<<a+1;
+    cout<<*(a+1);
+    cout<<a[3];
+    cout<<*a[3];
     return 0;
 }

@@ -2,6 +2,9 @@
 //arrays
 let arr=[1,2,3,4,5,6];
 let i=0;
+console.log(arr.indexOf(2));
+console.log(arr.find((n)=>n%2==0),"from find");
+console.log(arr.findIndex(n=> n%2!=0),"from findIndex");
 while(i<arr.length){
     console.log(arr[i]);
     i++;
