@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="ine"></h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let content=document.getElementById("ine");
+    let count=0;
+    content.innerHTML=count;
+    let start=document.getElementById("start");
+    let stop=document.getElementById("stop");
+    let id;// it stores setinterval
+    //function to add setinterval
+    start.addEventListener("click",function(){
+        clearInterval(id);
+        id=setInterval(increment,1000);
+    });
+
+    function increment(){
+        count++;
+        content.innerHTML=count;
+    }
+
+    stop.addEventListener("click",function(){
+        clearInterval(id);
+    });
+</script>
+</html>

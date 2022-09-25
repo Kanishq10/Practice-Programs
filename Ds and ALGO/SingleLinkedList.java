@@ -387,6 +387,18 @@ class LinkList{
 
 }
 class SingleLinkedList{
+    static LinkList tailReverse(LinkList ptr,LinkList prev){
+        if(ptr==null){
+            ptr=prev;
+            return ptr;
+        }
+        LinkList temp=ptr.next;
+        ptr.next=prev;
+        prev=ptr;
+        ptr=temp;
+        return tailReverse(ptr,prev);
+    }
+
     public static void main(String[] args) {
         LinkList x=new LinkList();
         x.pop();
@@ -500,6 +512,8 @@ class SingleLinkedList{
         sts.rotateClockwise(4);
         sts.print();
         sts.rotateCounterClockwise(4);
+        sts.print();
+        sts.start=tailReverse(sts.start, null);
         sts.print();
     }
 }

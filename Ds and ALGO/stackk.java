@@ -46,6 +46,19 @@ class StackList{
             return top.info;
         }
     }
+
+    void InsertAtBottom(StackList s,int x){
+        int temp;
+        if(s.top!=null){
+            temp=s.pop().info;
+            InsertAtBottom(s, x);
+            s.push(temp);
+        }
+        else{
+            s.push(x);
+        }
+    }
+
 }
 
 class StackArray{
@@ -81,6 +94,19 @@ class StackArray{
 class stackk {
     public static void main(String[] args) {
         Scanner s=new Scanner(System.in);
+        StackList f=new StackList();
+        f.push(12);
+        f.push(11);
+        f.push(10);
+        f.push(9);
+        f.push(8);
+        f.InsertAtBottom(f, 2);
+        f.InsertAtBottom(f, 3);
+        f.InsertAtBottom(f, 5);
+        while(f.top!=null){
+            System.out.print(f.pop().info+" ");
+        }
+        System.out.println();
         System.out.println("Enter Choice \n1.For Linked List Stack\n2.For Array Stack ");
         int ch=s.nextInt();
         switch(ch){

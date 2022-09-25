@@ -1,4 +1,6 @@
 // delete middle function
+//Why in turtle rabbit approach ,the meeting points of pointers is always the head
+// by some methematical proof😂 
 class Clist{
     int info;
     Clist start=null,ptr,next,n;
