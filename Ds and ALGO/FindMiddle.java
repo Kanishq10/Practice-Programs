@@ -15,7 +15,7 @@ class FindMiddle {
                 last=arr[count2];
             }
         } catch (Exception e) {
-            System.out.println("Middle Element is "+arr[count1]);
+            System.out.println("Middle Element is "+arr[count1-1]);
         }
     }
     public static void main(String[] args) {

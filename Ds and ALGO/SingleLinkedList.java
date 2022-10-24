@@ -31,7 +31,7 @@ class LinkList{
             start=n;
         }
         else{
-            n.next=start;
+            n.next=start;  //only this code can do all work
             start=n;
         }
     }
@@ -47,11 +47,11 @@ class LinkList{
         else{            
             ptr=start;
             int count=1;
-            while(count<index && ptr!=null){
+            while(count<index && ptr!=null){  //can be modified to ptr.next!=null
                 ptr=ptr.next;
                 count++;
             }
-            if(ptr==null || ptr.next==null){
+            if(ptr==null || ptr.next==null){   //(not sure)can be ommited of upper condition is ptr.next!=null
                 add(info);
             }
             else{
@@ -271,6 +271,50 @@ class LinkList{
             preptrY.next=ptrX;
         }
     }  
+    
+    LinkList swapNodes(LinkList head, int n1, int n2) {  //optimised code, can also work for double linked list if traversed only forward
+        
+        LinkList prevNode1 = null, prevNode2 = null,
+                   node1 = head, node2 = head;
+              if (head == null) {
+                  return null;
+              }
+              if (n1 == n2)
+                  return head;
+              while (node1 != null && node1.info != n1) {
+                  prevNode1 = node1;
+                  node1 = node1.next;
+              }
+       
+              // Search for node2
+              while (node2 != null && node2.info != n2) {
+                  prevNode2 = node2;
+                  node2 = node2.next;
+              }
+       
+              if (node1 != null && node2 != null) {
+       
+                  // If previous LinkList to node1 is not null then,
+                  // it will point to node2
+                  if (prevNode1 != null)
+                      prevNode1.next = node2;
+                  else
+                      head = node2;
+       
+                  // If previous LinkList to node2 is not null then,
+                  // it will point to node1
+                  if (prevNode2 != null)
+                      prevNode2.next = node1;
+                  else
+                      head = node1;
+       
+                  // Swaps the next nodes of node1 and node2
+                  LinkList temp = node1.next;
+                  node1.next = node2.next;
+                  node2.next = temp;
+              }
+        return head;    
+      }
     
     void reverse(){
         if(start==null || start.next==null){
