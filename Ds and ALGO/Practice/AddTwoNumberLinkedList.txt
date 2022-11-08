@@ -28,6 +28,6 @@ public class AddTwoNumberInLinkedList {
         return dummy.next;
       }
     public static void main(String[] args) {
-        
+        addListNumbers((1234)(linkedlist),(7435)(linkedlist));
     }
 }

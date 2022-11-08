@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 class BST{
     int info;
@@ -202,7 +203,7 @@ class BST{
     }
 
     int height(BST n){
-        if(n==null){
+        if(n==null){        //return -1 for edges , 0 for nodes
             return 0;      //return -1; this is for height=depth-1 , return 0 is used for most of the cases,problem will rise in printlevelorderlevelwise
         }
         else{
@@ -567,6 +568,52 @@ class BST{
 }
 
 class BinarySearchTree {
+    static class Pair {
+        BST node;
+        int state;
+        Pair(BST node, int state) {
+          this.node = node;
+          this.state = state;
+        }
+      }
+      
+      static void iterativePrePostInTraversal(BST node) {
+        Stack < Pair> st = new Stack< >();
+        Pair rtp = new Pair(node, 1);
+        st.push(rtp);
+        String pre = "";
+        String in = "";
+        String post = "";
+    
+        while (st.size() > 0) {
+          Pair top = st.peek();
+          if (top.state == 1) {  //pre,s++,left
+            pre += top.node.info + " ";
+            top.state++;
+            if (top.node.left != null) {
+              Pair lp = new Pair(top.node.left, 1);
+              st.push(lp);
+            }
+          }
+          else if (top.state == 2) { //in,s++,right
+            in += top.node.info + " ";
+            top.state++;
+            if (top.node.right != null) {
+              Pair rp = new Pair(top.node.right, 1);
+              st.push(rp);
+            }
+          }
+          else {        //post,pop
+            post += top.node.info + " ";
+            st.pop();
+          }
+        }
+        System.out.println("Preorder "+pre);
+        System.out.println("Inorder "+in);
+        System.out.println("PostOrder "+post);
+    
+      }
+
     static void printInternalNodes(BST root){
         if(root==null){
             return;
@@ -588,24 +635,26 @@ class BinarySearchTree {
         }
     }
 
-    static void printLevelOrder(BST root) {  //without recursion
-        if(root==null){
-            return;
-        }
-        Queue<BST> q = new LinkedList<>();
+    static void printLevelOrder(BST root) {
+        // write your code here
+        System.out.println("Printing LevelOrder Levelwise");
+        Queue< BST> q = new LinkedList< >();
         q.add(root);
-        while (!q.isEmpty()) {
-            BST curr = q.peek();
-            q.remove();
-            System.out.print(curr.info + " ");
+        while (q.size() > 0) {
+          int count = q.size();
+          for (int i = 0; i < count; i++) {
+            BST curr = q.remove();
+            System.out.print(curr.info+ " ");
             if (curr.left != null) {
-                q.add(curr.left);
+              q.add(curr.left);
             }
             if (curr.right != null) {
-                q.add(curr.right);
+              q.add(curr.right);
             }
+          }
+          System.out.println();
         }
-    }
+      }
 
     static void printLevelOrderLineByLine(BST root){ //this is without recursion
         if(root==null){
@@ -869,5 +918,7 @@ class BinarySearchTree {
         int arr[]={1,2,3,4,5,6,7,8,9};
         BST atb=sortedArrayToBinary(arr, 0, 8);
         printLevelOrderLineByLine(atb);
+        System.out.println("\n_________________________________");
+        iterativePrePostInTraversal(f.root);
     }    
 }
