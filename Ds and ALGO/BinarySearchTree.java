@@ -186,7 +186,7 @@ class BST{
                 return temp;
             }
             else{
-                temp=maxnode(root);
+                temp=maxnode(root.left);
                 root.info=temp.info;
                 root.left=deleteRec(root.left, temp.info);
             }
@@ -197,9 +197,9 @@ class BST{
     BST maxnode(BST root){
         BST curr=root;
         while(curr.right!=null){
-            root=root.right;
+            curr=curr.right;
         }
-        return root;
+        return curr;
     }
 
     int height(BST n){
@@ -683,6 +683,58 @@ class BinarySearchTree {
             }
         }
     }
+
+    static void printInorderIterartive(BST root)      //Important ,can be used for solving many problems like isValidBST or kth smallest
+   {
+     if(root==null) return;
+     Stack<BST> st=new Stack<>();
+     BST curr=root;
+    while(curr!=null || st.size()>0){
+      while(curr!=null){
+       st.push(curr);
+       curr=curr.left;
+        }
+      curr=st.pop();
+      System.out.println(curr.info+" ");
+      curr=curr.right;
+    }
+}
+
+static int isBinarySearchTree(BST root) {
+    // Write your code here
+    if (root == null)
+        return 1;
+    Stack<BST> st = new Stack<>();
+    BST curr = root;
+    BST pre = null;
+    while (curr != null || !st.isEmpty()) {
+        while (curr != null) {
+            st.push(curr);
+            curr = curr.left;
+        }
+        curr = st.pop();       //element will pop in inorder fashion 
+        if (pre != null && pre.info >= curr.info)
+        return 0;                                 // simply upper elements in stack are less than lower, inorder property
+        pre = curr;
+        curr = curr.right;
+    }
+    return 1;
+}
+
+static int kthSmallest(BST root, int k) {
+    if(root==null) return -1;
+      Stack<BST> stack = new Stack<>();
+      while(root != null || !stack.isEmpty()) {
+          while(root != null) {
+              stack.push(root);    
+              root = root.left;   
+          } 
+          root = stack.pop();
+          if(--k == 0) break;
+          root = root.right;
+      }
+      return root.info;
+  }
 
     static void printInorder(BST root){ 
         if(root!=null){
