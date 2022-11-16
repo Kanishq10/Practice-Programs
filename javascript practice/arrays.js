@@ -1,5 +1,6 @@
 
-//arrays
+//arrays it is a object
+//it is special case of object
 let arr=[1,2,3,4,5,6];
 let i=0;
 console.log(arr.indexOf(2));
@@ -38,3 +39,7 @@ console.log(...arr.slice(-3,-1));  //gives part of array,does not affect origina
 console.log(arr.slice(2,4));
 arr.splice(2,4);     //delete part of array,affect original
 console.log(...arr)
+let sum =arr.reduce((accumulator,x)=>{
+    return accumulator+x;
+},0)  //starting with 0(accumulator)
+console.log(sum);
