@@ -1,6 +1,35 @@
 import java.util.*;
 
 public class KnapSack {
+    //easy code
+    static double fractionalKnapsack(int val[], int weight[], int n, int m)
+    {
+      double sum=0;int j=-1;
+         while(m>=0)  
+          {  
+              double max=0;  
+              for(int i=0;i<n;i++)  
+              {  
+                  if(((double)val[i])/((double)weight[i])>max)  
+                  {  
+                      max=((double)val[i])/((double)weight[i]);  
+                      j=i;  
+                  }  
+              }  
+              if(weight[j]>m)  
+              {  
+                  sum+=m*max;  
+                  m=-1;  
+              }  
+              else  
+              {  
+                  m-=weight[j];  
+                  sum+=(double)val[j];  
+                  val[j]=0;  
+              }  
+          } 
+      return sum; 
+    }
 
     private static double getMaxValue(int[] wt, int[] val,
             int capacity) {

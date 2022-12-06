@@ -56,6 +56,10 @@ class LHeap{  //min heap
         }
         System.out.println();
     }
+
+    Boolean isMinHeap(int n,int i){
+        return (((2*i+1>=n)||(l.get(i)<=l.get(2*i+1) && isMinHeap(n, 2*i+1))) && ((2*i+2>=n)|| (l.get(i)<=l.get(2*i+2) && isMinHeap(n, 2*i+2))));
+    }
 }
 class HeapArrayListMin {
     public static void main(String[] args) {

@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.logging.Level;
 
 class BST{
-    int info;
+    int info,d=Integer.MAX_VALUE;
     BST right,left,root;
     BST(){
         this.root=null;
@@ -769,6 +772,130 @@ static int kthSmallest(BST root, int k) {
         x.right=sortedArrayToBinary(arr, mid+1, end);
         return x;
     }
+
+    static void topView(BST root){
+        Queue<Pair> q = new LinkedList<>();
+ 
+        // pushing root node with distance 0
+        q.add(new Pair(root, 0));
+ 
+        // hd is current node's horizontal distance from
+        // root node l is current left min horizontal
+        // distance (or max in magnitude) so far from the
+        // root node r is current right max horizontal
+        // distance so far from the root node
+ 
+        int hd = 0, l = 0, r = 0;
+ 
+        // stack is for holding left node's data because
+        // they will appear in reverse order that is why
+        // using stack
+ 
+        Stack<Integer> left = new Stack<>();
+ 
+        // ArrayList is for holding right node's data
+        ArrayList<Integer> right = new ArrayList<>();
+        BST node = null;
+ 
+        while (!q.isEmpty()) {
+            node = q.peek().node;
+            hd = q.peek().state;
+ 
+            if (hd < l) {
+                left.push(node.info);
+                l = hd;
+            }
+ 
+            if (hd > r) {
+                right.add(node.info);
+                r = hd;
+            }
+ 
+            if (node.left != null) {
+                q.add(new Pair(node.left, hd - 1));
+            }
+            if (node.right != null) {
+                q.add(new Pair(node.right, hd + 1));
+            }
+ 
+            q.poll();
+        }
+ 
+        // printing the left node's data in reverse order
+        while (!left.isEmpty()) {
+            System.out.print(left.peek() + " ");
+            left.pop();
+        }
+ 
+        // then printing the root node's data
+        System.out.print(root.info + " ");
+ 
+        // finally printing the right node
+        for (int d : right) {
+            System.out.print(d + " ");
+        }
+    }
+
+    static void bottomView(BST root){ //there is only game of hd
+        int hd=0;
+        HashMap<Integer,Integer> mi=new HashMap<>();
+        Queue<BST> q=new LinkedList<>();
+        root.d=hd;
+        q.add(root);
+        while(!q.isEmpty()){
+            BST temp=q.remove();
+            mi.put(hd, temp.info);  //it will replace the node with vertical same index
+            if(temp.left!=null){
+                temp.left.d=hd-1;
+                q.add(temp.left);
+            }
+            if(temp.right!=null){
+                temp.right.d=hd+1;
+                q.add(temp.right);
+            }
+        }
+        for(Integer val:mi.keySet()){
+            System.out.print(mi.get(val)+" ");
+        }
+    }
+    
+// The left view contains all nodes that are the first nodes in their levels.
+//  A simple solution is to do level order traversal and print the first node in every level. 
+    static void leftview(BST root){   
+        Queue<BST> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            for(int i=1;i<=q.size();i++){
+                BST curr=q.poll();
+                if(i==1){System.out.print(curr.info);}
+                if(curr.left!=null){
+                    q.add(curr.left);
+                }
+                if(curr.right!=null){
+                    q.add(curr.right);
+                }
+            }
+        }
+    }
+
+    // print the last in the level for right view
+    static void rightview(BST root){   
+        Queue<BST> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            for(int i=1;i<=q.size();i++){
+                BST curr=q.poll();
+                if(i==q.size()){System.out.print(curr.info);}
+                if(curr.left!=null){
+                    q.add(curr.left);
+                }
+                if(curr.right!=null){
+                    q.add(curr.right);
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         BST t=new BST();

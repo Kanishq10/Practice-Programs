@@ -71,6 +71,10 @@ class Aheap{     //MaxHeap
         }
     }
 
+    Boolean isMaxHeap(int n,int i){
+        return (((2*i+1>=n)||(arr[i]>=arr[2*i+1] && isMaxHeap(n, 2*i+1))) && ((2*i+2>=n)|| (arr[i]>=arr[2*i+2] && isMaxHeap(n, 2*i+2))));
+    }
+
     void print(){
         for(int i=0;i<size;i++){
             System.out.print(arr[i]+" ");
@@ -90,5 +94,7 @@ public static void main(String[] args) {
     h.delete(20);
     h.delete(40);
     h.print();
+    Boolean res=h.isMaxHeap(h.size, 0);
+    System.out.println(res);
 }
 }
