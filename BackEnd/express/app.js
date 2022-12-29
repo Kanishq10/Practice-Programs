@@ -20,9 +20,9 @@ app.post("/",(req,res)=>{
     console.log(vasd);
 });
 
-app.post("/signup",parse,(req,res)=>{
-    let obj={};
-})
+// app.post("/signup",parse,(req,res)=>{
+//     let obj={};
+// })
 app.listen(3000,(err)=>{
     if(err) console.log(err);
     else console.log("server started...")

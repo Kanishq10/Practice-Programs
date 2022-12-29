@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-image: url("images/cars.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        form {
+            width: 30rem;
+            min-width: 20rem;
+            margin: auto;
+            margin-top: 3.5rem;
+            text-align: center;
+            padding: 5px;
+            color: white;
+            border: 5px groove rgb(255, 255, 255);
+            border-radius: 20px;
+            backdrop-filter: brightness(70%);
+            height: 38rem;
+            min-height: 38rem;
+            /* overflow-wrap: break-word; */
+            box-shadow: 0 0 15px 5px black;
+        }
+
+        input {
+            background: none;
+            border: none;
+            border-bottom: 5px solid rgb(255, 255, 255);
+            font-size: large;
+            margin-bottom: 50px;
+            padding: 12px;
+            color: white;
+        }
+
+
+        ::placeholder {
+            color: white;
+        }
+
+
+        h1 {
+            font-size: 60px;
+            font-family: 'Brush Script MT', cursive;
+            width: 220px;
+            margin: 35px auto;
+            padding-bottom: 10px;
+            border-bottom: 5px solid rgb(255, 255, 255);
+        }
+
+
+        button {
+            background: none;
+            border: 2px solid rgb(255, 255, 255);
+            color: white;
+            height: 30px;
+            width: 100px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            transition: 1.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(rgb(85, 47, 255), rgb(231, 47, 255));
+            box-shadow: 0 0 10px 5px rgb(85, 47, 255);
+            border-color: rgb(85, 47, 255);
+            width: 110px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+
+        img {
+            border-radius: 50%;
+            position: relative;
+            margin-top: -3.2rem;
+            height: 6rem;
+            width: 6rem;
+        }
+
+        i {
+            font-size: 2.2rem;
+            color: rgb(255, 0, 0);
+            margin-right: 5;
+            padding: 12px;
+            border-bottom: 5px solid white;
+        }
+    </style>
+    <!-- <script>
+        const contactForm = document.getElementById("formes");
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            var request = new XMLHttpRequest();
+            var url = "/php/email-sender.php";
+            request.open("POST", url, true);
+            request.setRequestHeader("Content-Type", "application/json");
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+                    var jsonData = JSON.parse(request.response);
+                    console.log(jsonData);
+                }
+            };
+            
+            var name = document.getElementById("name").value;  
+            var pass=document.getElementById("password").value;
+
+            var data = JSON.stringify({ "name": name, "password":pass});
+
+            request.send(data);
+
+        });  
+    </script> -->
+</head>
+
+<body>
+
+    <form method="post" id="formes">
+        <img src="images/download.png">
+        <h1>Login</h1>
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" id="username" required><br>
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="email" id="email" required><br>
+        <i class="fas fa-key"></i>
+        <input type="password" name="password" required placeholder="Password" id="password"><br>
+        <button type="submit">Sign in</button>
+    </form>
+</body>
+<!-- axios fetch -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let btnfetch=document.querySelector("button");
+    btnfetch.addEventListener('click',async function(e){
+        e.preventDefault();
+        let user=document.querySelector("#username").value;
+        let email=document.querySelector("#email").value;
+        let password=document.querySelector("#password").value;
+        let resp=await axios.post('/auth/signup',{user,email,password});
+        console.log("response",resp);
+    })
+</script>
+</html>
