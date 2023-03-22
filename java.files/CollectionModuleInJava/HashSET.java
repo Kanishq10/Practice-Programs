@@ -1,7 +1,6 @@
-package advance__java;
+package CollectionModuleInJava;
 
-import java.util.HashSet;
-
+import java.util.*;
 public class HashSET {
 
 	public static void main(String[] args) {
@@ -42,6 +41,31 @@ public class HashSET {
 		h1.add("Sunday");
 		System.out.println(h1);// order is not maintained
 
+
+		System.out.println("=========================================");
+		HashSet<Integer> hm= new LinkedHashSet<>();   //hashset with properties of linkedList
+		hm.add(23);
+		hm.add(45);
+		hm.add(54);
+		hm.add(5);
+		hm.add(5);
+		hm.add(5);
+		hm.add(25);
+		hm.add(25);
+		hm.add(25);
+		hm.add(6);
+		hm.add(2);
+		hm.add(2);
+		hm.add(2);
+		hm.add(7);
+		System.out.println(hm);		
+		for (Integer i : hm) {
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		System.out.println(hm.size());
+		hm.remove(54);
+		System.out.println(hm);
 	}
 
 }

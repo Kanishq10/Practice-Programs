@@ -1,6 +1,7 @@
 package CollectionModuleInJava;
 import java.util.Scanner;
 import java.util.*;
+//this is solution of a question so ignore it
 class ArrayList_Collection
 {
     public static void main(String args[])

@@ -36,7 +36,7 @@ public class traversalls {
     //Your code here
     Iterator<Integer> it = ll.iterator();
     while(it.hasNext()){
-        System.out.print(it.next()+" ");
+        System.out.print(it.next()+" ");   //inner working of i.next()=> it prints current element and move pointer to next
     }
 }
 
