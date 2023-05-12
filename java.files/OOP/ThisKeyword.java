@@ -1,4 +1,4 @@
-package practice.oldPractice;
+package OOP;
 class Std{
     int fee,rollno,Section;
     String name;

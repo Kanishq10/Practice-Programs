@@ -1,3 +1,4 @@
+package OOP;
 public class constructor {
     int a,b;
     protected int g=6;

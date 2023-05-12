@@ -5,7 +5,7 @@ class Searching {
             if(arr[mid]==x){
                 return mid;
             }
-            if(arr[mid]>x){
+            else if(arr[mid]>x){
                 return BinarySearch(arr, l, mid, x);
             }else{
                 return BinarySearch(arr, mid+1, h, x);

@@ -1,4 +1,4 @@
-package practice.oldPractice;
+package OOP;
 class B{  
     A4 obj;  
     B(A4 obj){  

@@ -18,19 +18,16 @@ class Account {
 class FilteredAccount extends Account {
     constructor(accno) {
         super(accno);
-        FilteredAccount.filteredCount = 0;
+        this.filteredCount = 0;
     }
     process(t) {
         if (t.value === 0) {
-            FilteredAccount.filteredCount++;
+            this.filteredCount++;
             return true;
         }
         else {
             return super.process(t);
         }
-    }
-    show() {
-        console.log(FilteredAccount.filteredCount);
     }
 }
 const acc = new FilteredAccount(1233);
@@ -40,4 +37,4 @@ const t3 = new Transaction(-20);
 console.log(acc.process(t1));
 console.log(acc.process(t2));
 console.log(acc.process(t3));
-acc.show();
+console.log(acc.filteredCount);

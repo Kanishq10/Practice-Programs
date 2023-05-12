@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class GraphList {
    public ArrayList<Integer> BreadthFirstSearch(int v, ArrayList<Integer> adj)
@@ -67,6 +64,7 @@ class GraphList {
             }
         }
     }
+    return true;
    }
 
    public boolean detectCycle(int v,ArrayList<ArrayList<Integer>> adj){

@@ -1,4 +1,4 @@
-package practice.oldPractice;
+package OOP;
 class A1{
 A1 getA(){
         return this;
