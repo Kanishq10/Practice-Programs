@@ -1,0 +1,31 @@
+class tollBooth{
+    private static totalCars:number;
+    private static totalamount:number;
+    constructor(){
+        tollBooth.totalCars=0;
+        tollBooth.totalamount=0;
+    }
+
+    private payCar(){
+        tollBooth.totalCars +=1;
+        tollBooth.totalamount +=50;
+    }
+
+    private noPayCar(){
+        tollBooth.totalCars +=1;
+    }
+
+    sample(...args:string[]){     //get indefinite numbers of inputs of type string , spread operator used
+        args.forEach(Element=>{
+            if(Element==="p") this.payCar();
+            else this.noPayCar(); 
+        })
+    }
+    display(){
+        console.log(`The Total amount payable is ${tollBooth.totalamount} , Total Cars ${tollBooth.totalCars}`);
+    }
+}
+
+const obj=new tollBooth();
+obj.sample("p","n","n","p","n","p","p","n","p","n","p");
+obj.display();
