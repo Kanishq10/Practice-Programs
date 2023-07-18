@@ -3,37 +3,37 @@ import "./App.css";
 
 function App() {
   //multiple states in one line
-  const [fullName, setFullName] = useState({
+  const [contact, setContact] = useState({
     fname: "",
     lname: "",
+    email: ""
   });
 
   function handleChange(event) {
-    // let input=event.target.name;
-    // let output=event.target.value;
-    // console.log(input,output);
-    // if(input==="fname"){
-    //   setFullName({fname:output});
-    // }
-    // else if(input==="lname"){
-    //   setFullName({lname:output});
-    // }
-
     const { value, name } = event.target; //destructuring the value from target using object destructuring
 
-    setFullName((prevValue) => {
-      //prevValue have old record of old state
+    setContact((prevValue) => {
+      //prevValue have record of old state
       //if you don't write it in this way it will replace other variable value with empty
       if (name === "fname") {
         return {
           fname: value,
           lname: prevValue.lname,
+          email: prevValue.email
         };
       } else if (name === "lname") {
         return {
           fname: prevValue.fname,
           lname: value,
+          email:prevValue.email
         };
+      }
+      else if(name==="email"){
+        return{
+          fname: prevValue.fname,
+          lname: prevValue.lname,
+          email: value
+        }
       }
     });
   }
@@ -41,14 +41,17 @@ function App() {
   return (
     <div className="container">
       <h1>
-        Hello {fullName.fname+" "+fullName.lname}
+        Hello {contact.fname+" "+contact.lname}
       </h1>
+      <p>
+        {contact.email}
+      </p>
       <input
         onChange={handleChange}
         name="fname"
         type="text"
         placeholder="What's your first name?"
-        value={fullName.fname}
+        value={contact.fname}
       />
       <br/>
       <input
@@ -56,8 +59,15 @@ function App() {
         name="lname"
         type="text"
         placeholder="What's your last name?"
-        value={fullName.lname}
-      />
+        value={contact.lname}
+      /><br/>
+      <input
+        onChange={handleChange}
+        name="email"
+        type="email"
+        placeholder="What's your Email?"
+        value={contact.email}
+      /><br/>
       <button type="submit">Submit</button>
     </div>
   );
