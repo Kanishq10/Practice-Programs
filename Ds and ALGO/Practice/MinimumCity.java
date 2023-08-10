@@ -1,5 +1,5 @@
 package Practice;
-
+//we are using range update trick
 class MinimumCity {//from codequotient
     public static long findMin(int n, int m, int[][] arr) {
         // Write your code here

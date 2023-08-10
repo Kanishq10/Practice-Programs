@@ -15,7 +15,7 @@ class Solution {
         return count;
     }
 }
-for single linked list:
->>first store all elements in HashSet
->>then traverse the list and check if sum-list.Element is present in hashset or not
->>if present then count++ 
+// for single linked list:
+// >>first store all elements in HashSet
+// >>then traverse the list and check if sum-list.Element is present in hashset or not
+// >>if present then count++ 

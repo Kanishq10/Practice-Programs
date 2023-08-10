@@ -8,34 +8,28 @@ function App() {
     lname: "",
     email: ""
   });
-
+  
   function handleChange(event) {
     const { value, name } = event.target; //destructuring the value from target using object destructuring
-
+    
     setContact((prevValue) => {
-      //prevValue have record of old state
-      //if you don't write it in this way it will replace other variable value with empty
-      if (name === "fname") {
-        return {
-          fname: value,
-          lname: prevValue.lname,
-          email: prevValue.email
-        };
-      } else if (name === "lname") {
-        return {
-          fname: prevValue.fname,
-          lname: value,
-          email:prevValue.email
-        };
-      }
-      else if(name==="email"){
-        return{
-          fname: prevValue.fname,
-          lname: prevValue.lname,
-          email: value
-        }
+      return{
+        ...prevValue,
+        [name] :value      //add value of name with this syntax , otherwise it will take name as string and treat as key and will not take value in it
       }
     });
+  }
+  
+  
+  const[items,setItems]=useState([]);
+  const [counter,upadateCounter]=useState(0);
+
+  function addItem(prevItem){
+    upadateCounter(counter=> counter+1);
+    setItems((prevItem)=>{
+	      return [...prevItem,counter];  //adding random value
+	    })
+      console.log(items);
   }
 
   return (
@@ -68,6 +62,7 @@ function App() {
         placeholder="What's your Email?"
         value={contact.email}
       /><br/>
+      <button onClick={addItem}>ADD Item</button><br/>
       <button type="submit">Submit</button>
     </div>
   );
